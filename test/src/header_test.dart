@@ -1,11 +1,10 @@
-import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_calendar_carousel/src/calendar_header.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_calendar_carousel/src/calendar_header.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final title = "Test title";
-  final margin = const EdgeInsets.symmetric(vertical: 16.0);
+  final title = 'Test title';
+  final margin = const EdgeInsets.symmetric(vertical: 16);
   final iconColor = Colors.blueAccent;
 
   testWidgets('Verify Header Defaults', (WidgetTester tester) async {
@@ -98,7 +97,5 @@ void main() {
 
 // header uses Row which requires MaterialApp as an ancestor
 Widget wrapped(Widget widget) => MaterialApp(
-      home: Container(
-        child: Material(child: widget),
-      ),
+      home: Material(child: widget),
     );

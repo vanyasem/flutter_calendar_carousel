@@ -14,27 +14,29 @@ class MarkedDate implements MarkedDateInterface {
   });
 
   @override
-  bool operator ==(dynamic other) {
-    return this.date == other.date &&
-        this.color == other.color &&
-        this.textStyle == other.textStyle &&
-        this.id == other.id;
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is MarkedDate &&
+        date == other.date &&
+        color == other.color &&
+        textStyle == other.textStyle &&
+        id == other.id;
   }
 
   @override
-  DateTime getDate() => this.date;
+  DateTime getDate() => date;
 
   @override
-  int? getId() => this.id;
+  int? getId() => id;
 
   @override
-  Color getColor() => this.color;
+  Color getColor() => color;
 
   @override
-  TextStyle? getTextStyle() => this.textStyle;
+  TextStyle? getTextStyle() => textStyle;
 
   @override
-  // TODO: implement hashCode
+  // ignore: unnecessary_overrides, TODO: implement hashCode
   int get hashCode => super.hashCode;
 }
 

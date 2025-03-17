@@ -19,14 +19,16 @@ class Event implements EventInterface {
   });
 
   @override
-  bool operator ==(dynamic other) {
-    return this.date == other.date &&
-        this.title == other.title &&
-        this.description == other.description &&
-        this.location == other.location &&
-        this.icon == other.icon &&
-        this.dot == other.dot &&
-        this.id == other.id;
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is Event &&
+        date == other.date &&
+        title == other.title &&
+        description == other.description &&
+        location == other.location &&
+        icon == other.icon &&
+        dot == other.dot &&
+        id == other.id;
   }
 
   @override

@@ -1,48 +1,48 @@
 import 'package:flutter/material.dart';
 
-const TextStyle defaultHeaderTextStyle = const TextStyle(
-  fontSize: 20.0,
+const TextStyle defaultHeaderTextStyle = TextStyle(
+  fontSize: 20,
   color: Colors.blue,
 );
-const TextStyle defaultPrevDaysTextStyle = const TextStyle(
+const TextStyle defaultPrevDaysTextStyle = TextStyle(
   color: Colors.grey,
-  fontSize: 14.0,
+  fontSize: 14,
 );
-const TextStyle defaultNextDaysTextStyle = const TextStyle(
+const TextStyle defaultNextDaysTextStyle = TextStyle(
   color: Colors.grey,
-  fontSize: 14.0,
+  fontSize: 14,
 );
-const TextStyle defaultDaysTextStyle = const TextStyle(
+const TextStyle defaultDaysTextStyle = TextStyle(
   color: Colors.black,
-  fontSize: 14.0,
+  fontSize: 14,
 );
-const TextStyle defaultTodayTextStyle = const TextStyle(
+const TextStyle defaultTodayTextStyle = TextStyle(
   color: Colors.white,
-  fontSize: 14.0,
+  fontSize: 14,
 );
-const TextStyle defaultSelectedDayTextStyle = const TextStyle(
+const TextStyle defaultSelectedDayTextStyle = TextStyle(
   color: Colors.white,
-  fontSize: 14.0,
+  fontSize: 14,
 );
-const TextStyle defaultWeekdayTextStyle = const TextStyle(
+const TextStyle defaultWeekdayTextStyle = TextStyle(
   color: Colors.deepOrange,
-  fontSize: 14.0,
+  fontSize: 14,
 );
-const TextStyle defaultWeekendTextStyle = const TextStyle(
+const TextStyle defaultWeekendTextStyle = TextStyle(
   color: Colors.pinkAccent,
-  fontSize: 14.0,
+  fontSize: 14,
 );
-const TextStyle defaultInactiveDaysTextStyle = const TextStyle(
+const TextStyle defaultInactiveDaysTextStyle = TextStyle(
   color: Colors.black38,
-  fontSize: 14.0,
+  fontSize: 14,
 );
 final TextStyle defaultInactiveWeekendTextStyle = TextStyle(
-  color: Colors.pinkAccent.withOpacity(0.6),
-  fontSize: 14.0,
+  color: Colors.pinkAccent.withValues(alpha: 0.6),
+  fontSize: 14,
 );
 final Widget defaultMarkedDateWidget = Container(
-  margin: EdgeInsets.symmetric(horizontal: 1.0),
+  margin: EdgeInsets.symmetric(horizontal: 1),
   color: Colors.blueAccent,
-  height: 4.0,
-  width: 4.0,
+  height: 4,
+  width: 4,
 );
