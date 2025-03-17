@@ -1,5 +1,3 @@
-library flutter_calendar_dooboo;
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
