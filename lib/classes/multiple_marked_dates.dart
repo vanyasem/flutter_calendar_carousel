@@ -1,5 +1,6 @@
-import 'marked_date.dart';
 import 'package:flutter/material.dart';
+
+import 'marked_date.dart';
 
 class MultipleMarkedDates {
   List<MarkedDate> markedDates;
