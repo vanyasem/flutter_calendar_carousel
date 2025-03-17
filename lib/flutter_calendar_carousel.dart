@@ -533,9 +533,10 @@ class _CalendarState<T extends EventInterface>
           child: Stack(
             children: widget.showIconBehindDayText
                 ? <Widget>[
-                    widget.markedDatesMap != null
-                        ? _renderMarkedMapContainer(now)
-                        : Container(),
+                    if (widget.markedDatesMap != null)
+                      _renderMarkedMapContainer(now)
+                    else
+                      Container(),
                     getDayContainer(
                         isSelectable,
                         index,
@@ -560,9 +561,10 @@ class _CalendarState<T extends EventInterface>
                         isNextMonthDay,
                         isThisMonthDay,
                         now),
-                    widget.markedDatesMap != null
-                        ? _renderMarkedMapContainer(now)
-                        : Container(),
+                    if (widget.markedDatesMap != null)
+                      _renderMarkedMapContainer(now)
+                    else
+                      Container(),
                   ],
           ),
         ),
