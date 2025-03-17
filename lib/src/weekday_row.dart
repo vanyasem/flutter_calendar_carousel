@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 
 class WeekdayRow extends StatelessWidget {
   const WeekdayRow(this.firstDayOfWeek, this.customWeekdayBuilder,
-      {Key? key,
+      {final Key? key,
       required this.showWeekdays,
       required this.weekdayFormat,
       required this.weekdayMargin,
@@ -26,7 +26,7 @@ class WeekdayRow extends StatelessWidget {
   final DateFormat localeDate;
   final int firstDayOfWeek;
 
-  Widget _weekdayContainer(int weekday, String weekDayName) {
+  Widget _weekdayContainer(final int weekday, final String weekDayName) {
     final customWeekdayBuilder = this.customWeekdayBuilder;
     return customWeekdayBuilder != null
         ? customWeekdayBuilder(weekday, weekDayName)
@@ -86,7 +86,7 @@ class WeekdayRow extends StatelessWidget {
 
   // TODO - locale issues
   List<Widget> _renderWeekDays() {
-    List<Widget> list = [];
+    final List<Widget> list = [];
 
     /// because of number of days in a week is 7, so it would be easier to count it til 7.
     for (var i = firstDayOfWeek, count = 0;
@@ -124,7 +124,7 @@ class WeekdayRow extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => showWeekdays
+  Widget build(final BuildContext context) => showWeekdays
       ? Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: _renderWeekDays(),

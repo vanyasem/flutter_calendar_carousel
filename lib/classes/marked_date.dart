@@ -15,7 +15,7 @@ class MarkedDate implements MarkedDateInterface {
   });
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(final Object other) {
     if (identical(other, this)) {
       return true;
     }

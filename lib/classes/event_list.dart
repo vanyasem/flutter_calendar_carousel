@@ -5,7 +5,7 @@ class EventList<T> {
     required this.events,
   });
 
-  void add(DateTime date, T event) {
+  void add(final DateTime date, final T event) {
     final eventsOfDate = events[date];
     if (eventsOfDate == null) {
       events[date] = [event];
@@ -14,7 +14,7 @@ class EventList<T> {
     }
   }
 
-  void addAll(DateTime date, List<T> events) {
+  void addAll(final DateTime date, final List<T> events) {
     final eventsOfDate = this.events[date];
     if (eventsOfDate == null) {
       this.events[date] = events;
@@ -23,12 +23,12 @@ class EventList<T> {
     }
   }
 
-  bool remove(DateTime date, T event) {
+  bool remove(final DateTime date, final T event) {
     final eventsOfDate = events[date];
     return eventsOfDate != null ? eventsOfDate.remove(event) : false;
   }
 
-  List<T> removeAll(DateTime date) {
+  List<T> removeAll(final DateTime date) {
     return events.remove(date) ?? [];
   }
 
@@ -36,7 +36,7 @@ class EventList<T> {
     events.clear();
   }
 
-  List<T> getEvents(DateTime date) {
+  List<T> getEvents(final DateTime date) {
     return events[date] ?? [];
   }
 }

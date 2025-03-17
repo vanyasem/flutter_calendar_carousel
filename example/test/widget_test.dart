@@ -12,7 +12,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   DateTime? pressedDay;
   testWidgets('Default test for Calendar Carousel',
-      (WidgetTester tester) async {
+      (final WidgetTester tester) async {
     //  Build our app and trigger a frame.
     final carousel = CalendarCarousel(
       daysHaveCircularBorder: null,
@@ -33,14 +33,14 @@ void main() {
       todayTextStyle: TextStyle(
         color: Colors.blue,
       ),
-      markedDateIconBuilder: (Event event) {
+      markedDateIconBuilder: (final Event event) {
         return event.icon ?? Icon(Icons.help_outline);
       },
       todayButtonColor: Colors.transparent,
       todayBorderColor: Colors.green,
       markedDateMoreShowTotal: true,
       // null for not showing hidden events indicator
-      onDayPressed: (date, event) {
+      onDayPressed: (final date, final event) {
         pressedDay = date;
       },
     );

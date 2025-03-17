@@ -8,11 +8,11 @@ import 'package:intl/intl.dart' show DateFormat;
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({final Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return MaterialApp(
       title: 'dooboolab flutter calendar',
       theme: ThemeData(
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({final Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -135,12 +135,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     /// Example with custom icon
     final calendarCarousel = CalendarCarousel<Event>(
-      onDayPressed: (date, events) {
+      onDayPressed: (final date, final events) {
         setState(() => _currentDate = date);
-        for (var event in events) {
+        for (final event in events) {
           debugPrint(event.title);
         }
       },
@@ -165,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
       todayTextStyle: TextStyle(
         color: Colors.blue,
       ),
-      markedDateIconBuilder: (event) {
+      markedDateIconBuilder: (final event) {
         return event.icon ?? Icon(Icons.help_outline);
       },
       minSelectedDate: _currentDate.subtract(Duration(days: 360)),
@@ -181,9 +181,9 @@ class _MyHomePageState extends State<MyHomePage> {
     /// Example Calendar Carousel without header and custom prev & next button
     final calendarCarouselNoHeader = CalendarCarousel<Event>(
       todayBorderColor: Colors.green,
-      onDayPressed: (date, events) {
+      onDayPressed: (final date, final events) {
         setState(() => _currentDate2 = date);
-        for (var event in events) {
+        for (final event in events) {
           debugPrint(event.title);
         }
       },
@@ -231,13 +231,13 @@ class _MyHomePageState extends State<MyHomePage> {
         color: Colors.tealAccent,
         fontSize: 16,
       ),
-      onCalendarChanged: (DateTime date) {
+      onCalendarChanged: (final DateTime date) {
         setState(() {
           _targetDateTime = date;
           _currentMonth = DateFormat.yMMM().format(_targetDateTime);
         });
       },
-      onDayLongPressed: (DateTime date) {
+      onDayLongPressed: (final DateTime date) {
         debugPrint('long pressed date $date');
       },
     );

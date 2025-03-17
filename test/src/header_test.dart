@@ -7,7 +7,7 @@ void main() {
   final margin = const EdgeInsets.symmetric(vertical: 16);
   final iconColor = Colors.blueAccent;
 
-  testWidgets('Verify Header Defaults', (WidgetTester tester) async {
+  testWidgets('Verify Header Defaults', (final WidgetTester tester) async {
     var headerTapped = false;
     var leftPressed = false;
     var rightPressed = false;
@@ -44,7 +44,7 @@ void main() {
     expect(leftPressed, equals(true));
   });
 
-  testWidgets('Verify No header Renders', (WidgetTester tester) async {
+  testWidgets('Verify No header Renders', (final WidgetTester tester) async {
     final noHeaderEmpty = CalendarHeader(
       showHeader: false,
       headerTitle: '',
@@ -58,7 +58,7 @@ void main() {
     expect(find.byWidget(noHeaderEmpty), findsOneWidget);
   });
 
-  testWidgets('Verify Header Is Not Touchable', (WidgetTester tester) async {
+  testWidgets('Verify Header Is Not Touchable', (final WidgetTester tester) async {
     await tester.pumpWidget(wrapped(CalendarHeader(
       headerTitle: title,
       headerMargin: margin,
@@ -76,7 +76,7 @@ void main() {
     expect(touchableHeader, findsNothing);
   });
 
-  testWidgets('Verify No Header Buttons', (WidgetTester tester) async {
+  testWidgets('Verify No Header Buttons', (final WidgetTester tester) async {
     await tester.pumpWidget(wrapped(CalendarHeader(
       headerTitle: title,
       headerMargin: margin,
@@ -96,6 +96,6 @@ void main() {
 }
 
 // header uses Row which requires MaterialApp as an ancestor
-Widget wrapped(Widget widget) => MaterialApp(
+Widget wrapped(final Widget widget) => MaterialApp(
       home: Material(child: widget),
     );

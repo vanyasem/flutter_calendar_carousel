@@ -5,7 +5,7 @@ import 'package:flutter_calendar_carousel/src/default_styles.dart'
 class CalendarHeader extends StatelessWidget {
   /// Passing in values for [leftButtonIcon] or [rightButtonIcon] will override [headerIconColor]
   const CalendarHeader(
-      {Key? key,
+      {final Key? key,
       required this.headerTitle,
       this.headerMargin,
       required this.showHeader,
@@ -57,7 +57,7 @@ class CalendarHeader extends StatelessWidget {
       );
 
   @override
-  Widget build(BuildContext context) => showHeader
+  Widget build(final BuildContext context) => showHeader
       ? Container(
           margin: headerMargin,
           child: DefaultTextStyle(

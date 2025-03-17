@@ -13,7 +13,7 @@ Type typeOf<T>() => T;
 
 void main() {
   testWidgets('Default test for Calendar Carousel',
-      (WidgetTester tester) async {
+      (final WidgetTester tester) async {
     DateTime? pressedDay;
     //  Build our app and trigger a frame.
     final carousel = CalendarCarousel(
@@ -35,14 +35,14 @@ void main() {
       todayTextStyle: TextStyle(
         color: Colors.blue,
       ),
-      markedDateIconBuilder: (Event event) {
+      markedDateIconBuilder: (final Event event) {
         return event.icon ?? Icon(Icons.help_outline);
       },
       todayButtonColor: Colors.transparent,
       todayBorderColor: Colors.green,
       markedDateMoreShowTotal: true,
       // null for not showing hidden events indicator
-      onDayPressed: (date, event) {
+      onDayPressed: (final date, final event) {
         pressedDay = date;
       },
     );
@@ -60,13 +60,13 @@ void main() {
 
   testWidgets(
     'make sure onDayPressed is called when the user tap',
-    (WidgetTester tester) async {
+    (final WidgetTester tester) async {
       DateTime? pressedDay;
 
       final carousel = CalendarCarousel(
         weekFormat: true,
         height: 200,
-        onDayPressed: (date, event) {
+        onDayPressed: (final date, final event) {
           pressedDay = date;
         },
       );
@@ -95,7 +95,7 @@ void main() {
 
   testWidgets(
     'should do nothing when the user tap and onDayPressed is not provided',
-    (WidgetTester tester) async {
+    (final WidgetTester tester) async {
       final carousel = CalendarCarousel(
         weekFormat: true,
         height: 200,
@@ -120,13 +120,13 @@ void main() {
 
   testWidgets(
     'make sure onDayLongPressed is called when the user press and hold',
-    (WidgetTester tester) async {
+    (final WidgetTester tester) async {
       DateTime? longPressedDay;
 
       final carousel = CalendarCarousel(
         weekFormat: true,
         height: 200,
-        onDayLongPressed: (date) {
+        onDayLongPressed: (final date) {
           longPressedDay = date;
         },
       );
@@ -154,7 +154,7 @@ void main() {
 
   testWidgets(
     'should do nothing when the user press and hold and onDayLongPressed is not provided',
-    (WidgetTester tester) async {
+    (final WidgetTester tester) async {
       final carousel = CalendarCarousel(
         weekFormat: true,
         height: 200,

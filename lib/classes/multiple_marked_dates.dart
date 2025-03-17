@@ -6,11 +6,12 @@ class MultipleMarkedDates {
 
   MultipleMarkedDates({required this.markedDates});
 
-  void add(MarkedDate markedDate) {
+  void add(final MarkedDate markedDate) {
     markedDates.add(markedDate);
   }
 
-  void addRange(MarkedDate markedDate, {int plus = 0, int minus = 0}) {
+  void addRange(final MarkedDate markedDate,
+      {final int plus = 0, final int minus = 0}) {
     add(markedDate);
 
     if (plus > 0) {
@@ -48,11 +49,11 @@ class MultipleMarkedDates {
     }
   }
 
-  void addAll(List<MarkedDate> markedDates) {
+  void addAll(final List<MarkedDate> markedDates) {
     this.markedDates.addAll(markedDates);
   }
 
-  bool remove(MarkedDate markedDate) {
+  bool remove(final MarkedDate markedDate) {
     return markedDates.remove(markedDate);
   }
 
@@ -60,26 +61,30 @@ class MultipleMarkedDates {
     markedDates.clear();
   }
 
-  bool isMarked(DateTime date) {
-    final results = markedDates.firstWhere((element) => element.date == date,
+  bool isMarked(final DateTime date) {
+    final results = markedDates.firstWhere(
+        (final element) => element.date == date,
         orElse: () => MarkedDate(color: Colors.black, date: DateTime(0)));
     return results.date.year == date.year;
   }
 
-  Color getColor(DateTime date) {
-    final results = markedDates.firstWhere((element) => element.date == date,
+  Color getColor(final DateTime date) {
+    final results = markedDates.firstWhere(
+        (final element) => element.date == date,
         orElse: () => MarkedDate(color: Colors.black, date: DateTime(0)));
     return results.color;
   }
 
-  DateTime getDate(DateTime date) {
-    final results = markedDates.firstWhere((element) => element.date == date,
+  DateTime getDate(final DateTime date) {
+    final results = markedDates.firstWhere(
+        (final element) => element.date == date,
         orElse: () => MarkedDate(color: Colors.black, date: DateTime(0)));
     return results.date;
   }
 
-  TextStyle? getTextStyle(DateTime date) {
-    final results = markedDates.firstWhere((element) => element.date == date,
+  TextStyle? getTextStyle(final DateTime date) {
+    final results = markedDates.firstWhere(
+        (final element) => element.date == date,
         orElse: () => MarkedDate(color: Colors.black, date: DateTime(0)));
     return results.textStyle;
   }

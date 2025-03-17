@@ -9,7 +9,7 @@ void main() {
   final locale = DateFormat.yMMM('en_US');
   final margin = const EdgeInsets.only(bottom: 4);
 
-  testWidgets('test short weekday row', (WidgetTester tester) async {
+  testWidgets('test short weekday row', (final WidgetTester tester) async {
     await tester.pumpWidget(wrapped(
       WeekdayRow(
         0,
@@ -33,7 +33,7 @@ void main() {
     expect(find.text('Sat'), findsOneWidget);
   });
 
-  testWidgets('test narrow weekday row', (WidgetTester tester) async {
+  testWidgets('test narrow weekday row', (final WidgetTester tester) async {
     await tester.pumpWidget(wrapped(WeekdayRow(
       0,
       null,
@@ -56,7 +56,7 @@ void main() {
     expect(find.text('F'), findsOneWidget);
   });
 
-  testWidgets('test standalone weekday row', (WidgetTester tester) async {
+  testWidgets('test standalone weekday row', (final WidgetTester tester) async {
     await tester.pumpWidget(wrapped(WeekdayRow(
       0,
       null,
@@ -78,7 +78,7 @@ void main() {
     expect(find.text('Saturday'), findsOneWidget);
   });
 
-  testWidgets('test standalone short weekday row', (WidgetTester tester) async {
+  testWidgets('test standalone short weekday row', (final WidgetTester tester) async {
     await tester.pumpWidget(wrapped(WeekdayRow(
       0,
       null,
@@ -100,7 +100,7 @@ void main() {
     expect(find.text('Sat'), findsOneWidget);
   });
 
-  testWidgets('test row does not render', (WidgetTester tester) async {
+  testWidgets('test row does not render', (final WidgetTester tester) async {
     final emptyContainer = WeekdayRow(
       0,
       null,
@@ -121,7 +121,7 @@ void main() {
   });
 }
 
-Widget wrapped(Widget widget) => Directionality(
+Widget wrapped(final Widget widget) => Directionality(
       textDirection: TextDirection.ltr,
       child: widget,
     );
