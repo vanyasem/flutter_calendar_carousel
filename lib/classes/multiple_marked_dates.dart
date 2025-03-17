@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/marked_date.dart';
 
 class MultipleMarkedDates {
-  List<MarkedDate> markedDates;
-
   MultipleMarkedDates({required this.markedDates});
+
+  List<MarkedDate> markedDates;
 
   void add(final MarkedDate markedDate) {
     markedDates.add(markedDate);

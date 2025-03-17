@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 
 @immutable
 class MarkedDate implements MarkedDateInterface {
-  final Color color;
-  final int? id;
-  final TextStyle? textStyle;
-  final DateTime date;
-
   const MarkedDate({
     required this.color,
     this.id,
     this.textStyle,
     required this.date,
   });
+
+  final Color color;
+  final int? id;
+  final TextStyle? textStyle;
+  final DateTime date;
 
   @override
   bool operator ==(final Object other) {

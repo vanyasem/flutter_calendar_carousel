@@ -1,9 +1,9 @@
 class EventList<T> {
-  Map<DateTime, List<T>> events;
-
   EventList({
     required this.events,
   });
+
+  Map<DateTime, List<T>> events;
 
   void add(final DateTime date, final T event) {
     final eventsOfDate = events[date];

@@ -2,14 +2,6 @@ import 'package:flutter/material.dart';
 
 @immutable
 class Event implements EventInterface {
-  final DateTime date;
-  final String? title;
-  final String? description;
-  final String? location;
-  final Widget? icon;
-  final Widget? dot;
-  final int? id;
-
   const Event({
     this.id,
     required this.date,
@@ -19,6 +11,14 @@ class Event implements EventInterface {
     this.icon,
     this.dot,
   });
+
+  final DateTime date;
+  final String? title;
+  final String? description;
+  final String? location;
+  final Widget? icon;
+  final Widget? dot;
+  final int? id;
 
   @override
   bool operator ==(final Object other) {
