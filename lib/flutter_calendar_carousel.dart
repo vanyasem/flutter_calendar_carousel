@@ -271,7 +271,9 @@ class _CalendarState<T extends EventInterface>
             DateTime.now().year + 1, DateTime.now().month, DateTime.now().day);
 
     final selectedDateTime = widget.selectedDateTime;
-    if (selectedDateTime != null) _selectedDate = selectedDateTime;
+    if (selectedDateTime != null) {
+      _selectedDate = selectedDateTime;
+    }
 
     _init();
 
@@ -352,7 +354,9 @@ class _CalendarState<T extends EventInterface>
             onLeftButtonPressed: () {
               widget.onLeftArrowPressed?.call();
 
-              if (this._pageNum > 0) _setDate(this._pageNum - 1);
+              if (this._pageNum > 0) {
+                _setDate(this._pageNum - 1);
+              }
             },
             onRightButtonPressed: () {
               widget.onRightArrowPressed?.call();
@@ -846,8 +850,12 @@ class _CalendarState<T extends EventInterface>
   }
 
   void _onDayPressed(DateTime picked) {
-    if (picked.millisecondsSinceEpoch < minDate.millisecondsSinceEpoch) return;
-    if (picked.millisecondsSinceEpoch > maxDate.millisecondsSinceEpoch) return;
+    if (picked.millisecondsSinceEpoch < minDate.millisecondsSinceEpoch) {
+      return;
+    }
+    if (picked.millisecondsSinceEpoch > maxDate.millisecondsSinceEpoch) {
+      return;
+    }
 
     setState(() {
       _selectedDate = picked;

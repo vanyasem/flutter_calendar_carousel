@@ -16,7 +16,9 @@ class MarkedDate implements MarkedDateInterface {
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this)) return true;
+    if (identical(other, this)) {
+      return true;
+    }
     return other is MarkedDate &&
         date == other.date &&
         color == other.color &&

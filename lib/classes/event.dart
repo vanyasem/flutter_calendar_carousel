@@ -22,7 +22,9 @@ class Event implements EventInterface {
 
   @override
   bool operator ==(Object other) {
-    if (identical(other, this)) return true;
+    if (identical(other, this)) {
+      return true;
+    }
     return other is Event &&
         date == other.date &&
         title == other.title &&
