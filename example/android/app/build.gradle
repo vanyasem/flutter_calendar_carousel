@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace = 'com.dooboolab.example'
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
