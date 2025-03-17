@@ -36,7 +36,7 @@ class MarkedDate implements MarkedDateInterface {
   TextStyle? getTextStyle() => textStyle;
 
   @override
-  // TODO: implement hashCode
+  // ignore: unnecessary_overrides, TODO: implement hashCode
   int get hashCode => super.hashCode;
 }
 

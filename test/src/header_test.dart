@@ -97,7 +97,5 @@ void main() {
 
 // header uses Row which requires MaterialApp as an ancestor
 Widget wrapped(Widget widget) => MaterialApp(
-      home: Container(
-        child: Material(child: widget),
-      ),
+      home: Material(child: widget),
     );
