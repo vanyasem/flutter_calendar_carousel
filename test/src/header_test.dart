@@ -3,8 +3,8 @@ import 'package:flutter_calendar_carousel/src/calendar_header.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final title = "Test title";
-  final margin = const EdgeInsets.symmetric(vertical: 16.0);
+  final title = 'Test title';
+  final margin = const EdgeInsets.symmetric(vertical: 16);
   final iconColor = Colors.blueAccent;
 
   testWidgets('Verify Header Defaults', (WidgetTester tester) async {

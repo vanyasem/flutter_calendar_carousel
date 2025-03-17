@@ -147,14 +147,14 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
 
   const CalendarCarousel(
       {Key? key,
-      this.viewportFraction = 1.0,
+      this.viewportFraction = 1,
       this.prevDaysTextStyle,
       this.daysTextStyle,
       this.nextDaysTextStyle,
       this.prevMonthDayBorderColor = Colors.transparent,
       this.thisMonthDayBorderColor = Colors.transparent,
       this.nextMonthDayBorderColor = Colors.transparent,
-      this.dayPadding = 2.0,
+      this.dayPadding = 2,
       this.height = double.infinity,
       this.width = double.infinity,
       this.todayTextStyle,
@@ -178,8 +178,8 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
       this.markedDateShowIcon = false,
       this.markedDateIconBorderColor,
       this.markedDateIconMaxShown = 2,
-      this.markedDateIconMargin = 5.0,
-      this.markedDateIconOffset = 5.0,
+      this.markedDateIconMargin = 5,
+      this.markedDateIconOffset = 5,
       this.markedDateIconBuilder,
       this.markedDateMoreShowTotal,
       this.markedDateMoreCustomDecoration,
@@ -188,10 +188,10 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
       this.markedDateMoreCustomTextStyle,
       this.markedDateWidget,
       this.multipleMarkedDates,
-      this.headerMargin = const EdgeInsets.symmetric(vertical: 16.0),
-      this.childAspectRatio = 1.0,
-      this.weekDayMargin = const EdgeInsets.only(bottom: 4.0),
-      this.weekDayPadding = const EdgeInsets.all(0.0),
+      this.headerMargin = const EdgeInsets.symmetric(vertical: 16),
+      this.childAspectRatio = 1,
+      this.weekDayMargin = const EdgeInsets.only(bottom: 4),
+      this.weekDayPadding = const EdgeInsets.all(0),
       this.weekDayBackgroundColor = Colors.transparent,
       this.customWeekDayBuilder,
       this.customDayBuilder,
@@ -203,7 +203,7 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
       this.rightButtonIcon,
       this.customGridViewPhysics,
       this.onCalendarChanged,
-      this.locale = "en",
+      this.locale = 'en',
       this.firstDayOfWeek,
       this.minSelectedDate,
       this.maxSelectedDate,
@@ -600,10 +600,10 @@ class _CalendarState<T extends EventInterface>
         if (!widget.shouldShowTransform) {
           return child!;
         }
-        double value = 1.0;
+        double value = 1;
         if (_controller.position.haveDimensions) {
           value = _controller.page! - slideIndex;
-          value = (1 - (value.abs() * .5)).clamp(0.0, 1.0);
+          value = (1 - (value.abs() * .5)).clamp(0, 1);
         }
 
         return Center(
@@ -715,10 +715,10 @@ class _CalendarState<T extends EventInterface>
     return AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
-          double value = 1.0;
+          double value = 1;
           if (_controller.position.haveDimensions) {
             value = _controller.page! - slideIndex;
-            value = (1 - (value.abs() * .5)).clamp(0.0, 1.0);
+            value = (1 - (value.abs() * .5)).clamp(0, 1);
           }
 
           return Center(
@@ -942,7 +942,7 @@ class _CalendarState<T extends EventInterface>
         });
 
         _controller.animateToPage(page,
-            duration: Duration(milliseconds: 1), curve: Threshold(0.0));
+            duration: Duration(milliseconds: 1), curve: Threshold(0));
       } else {
         setState(() {
           this._pageNum = page;
@@ -951,7 +951,7 @@ class _CalendarState<T extends EventInterface>
           _endWeekday = _lastDayOfWeek(_dates[page]).weekday - firstDayOfWeek;
         });
         _controller.animateToPage(page,
-            duration: Duration(milliseconds: 1), curve: Threshold(0.0));
+            duration: Duration(milliseconds: 1), curve: Threshold(0));
       }
 
       //call callback
@@ -974,7 +974,7 @@ class _CalendarState<T extends EventInterface>
     } else {
       return Container(
         height: double.infinity,
-        padding: EdgeInsets.only(bottom: 4.0),
+        padding: EdgeInsets.only(bottom: 4),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisSize: MainAxisSize.max,
@@ -1002,7 +1002,7 @@ class _CalendarState<T extends EventInterface>
       List<Widget> tmp = [];
       int count = 0;
       int eventIndex = 0;
-      double offset = 0.0;
+      double offset = 0;
       double padding = markedDateIconMargin;
       for (T event in markedEvents) {
         if (markedDateShowIcon) {
@@ -1029,16 +1029,16 @@ class _CalendarState<T extends EventInterface>
           if (count > 0 && markedDateMoreShowTotal != null) {
             tmp.add(
               Positioned(
-                bottom: 0.0,
-                right: 0.0,
+                bottom: 0,
+                right: 0,
                 child: Container(
-                  padding: EdgeInsets.all(4.0),
+                  padding: EdgeInsets.all(4),
                   width: markedDateMoreShowTotal ? 18 : null,
                   height: markedDateMoreShowTotal ? 18 : null,
                   decoration: markedDateMoreCustomDecoration ??
                       BoxDecoration(
                         color: Colors.red,
-                        borderRadius: BorderRadius.all(Radius.circular(1000.0)),
+                        borderRadius: BorderRadius.all(Radius.circular(1000)),
                       ),
                   child: Center(
                     child: Text(
@@ -1050,7 +1050,7 @@ class _CalendarState<T extends EventInterface>
                           : ('$count+'),
                       style: markedDateMoreCustomTextStyle ??
                           TextStyle(
-                              fontSize: 9.0,
+                              fontSize: 9,
                               color: Colors.white,
                               fontWeight: FontWeight.normal),
                     ),
