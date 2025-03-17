@@ -6,13 +6,15 @@ import 'package:intl/intl.dart';
 
 class WeekdayRow extends StatelessWidget {
   const WeekdayRow(this.firstDayOfWeek, this.customWeekdayBuilder,
-      {Key? key, required this.showWeekdays,
+      {Key? key,
+      required this.showWeekdays,
       required this.weekdayFormat,
       required this.weekdayMargin,
       required this.weekdayPadding,
       required this.weekdayBackgroundColor,
       required this.weekdayTextStyle,
-      required this.localeDate}) : super(key: key);
+      required this.localeDate})
+      : super(key: key);
 
   final WeekdayBuilder? customWeekdayBuilder;
   final bool showWeekdays;

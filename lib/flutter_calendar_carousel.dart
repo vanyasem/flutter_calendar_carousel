@@ -81,7 +81,6 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final TextStyle? weekendTextStyle;
   final EventList<T>? markedDatesMap;
 
-
   /// Change `makredDateWidget` when `markedDateShowIcon` is set to false.
   final Widget? markedDateWidget;
 
@@ -144,90 +143,90 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final bool shouldShowTransform;
 
   ///Maximium number of dots to be shown
-  final int maxDot ;
+  final int maxDot;
 
-  const CalendarCarousel({
-    Key? key,
-    this.viewportFraction = 1.0,
-    this.prevDaysTextStyle,
-    this.daysTextStyle,
-    this.nextDaysTextStyle,
-    this.prevMonthDayBorderColor = Colors.transparent,
-    this.thisMonthDayBorderColor = Colors.transparent,
-    this.nextMonthDayBorderColor = Colors.transparent,
-    this.dayPadding = 2.0,
-    this.height = double.infinity,
-    this.width = double.infinity,
-    this.todayTextStyle,
-    this.dayButtonColor = Colors.transparent,
-    this.todayBorderColor = Colors.red,
-    this.todayButtonColor = Colors.red,
-    this.selectedDateTime,
-    this.targetDateTime,
-    this.selectedDayTextStyle,
-    this.selectedDayBorderColor = Colors.green,
-    this.selectedDayButtonColor = Colors.green,
-    this.daysHaveCircularBorder,
-    this.disableDayPressed = false,
-    this.onDayPressed,
-    this.weekdayTextStyle = const TextStyle(),
-    this.iconColor = Colors.blueAccent,
-    this.headerTextStyle,
-    this.headerText,
-    this.weekendTextStyle,
-    this.markedDatesMap,
-    this.markedDateShowIcon = false,
-    this.markedDateIconBorderColor,
-    this.markedDateIconMaxShown = 2,
-    this.markedDateIconMargin = 5.0,
-    this.markedDateIconOffset = 5.0,
-    this.markedDateIconBuilder,
-    this.markedDateMoreShowTotal,
-    this.markedDateMoreCustomDecoration,
-    this.markedDateCustomShapeBorder,
-    this.markedDateCustomTextStyle,
-    this.markedDateMoreCustomTextStyle,
-    this.markedDateWidget,
-    this.multipleMarkedDates,
-    this.headerMargin = const EdgeInsets.symmetric(vertical: 16.0),
-    this.childAspectRatio = 1.0,
-    this.weekDayMargin = const EdgeInsets.only(bottom: 4.0),
-    this.weekDayPadding = const EdgeInsets.all(0.0),
-    this.weekDayBackgroundColor = Colors.transparent,
-    this.customWeekDayBuilder,
-    this.customDayBuilder,
-    this.showWeekDays = true,
-    this.weekFormat = false,
-    this.showHeader = true,
-    this.showHeaderButton = true,
-    this.leftButtonIcon,
-    this.rightButtonIcon,
-    this.customGridViewPhysics,
-    this.onCalendarChanged,
-    this.locale = "en",
-    this.firstDayOfWeek,
-    this.minSelectedDate,
-    this.maxSelectedDate,
-    this.inactiveDaysTextStyle,
-    this.inactiveWeekendTextStyle,
-    this.headerTitleTouchable = false,
-    this.onHeaderTitlePressed,
-    this.onLeftArrowPressed,
-    this.onRightArrowPressed,
-    this.weekDayFormat = WeekdayFormat.short,
-    this.staticSixWeekFormat = false,
-    this.isScrollable = true,
-    this.scrollDirection = Axis.horizontal,
-    this.showOnlyCurrentMonthDate = false,
-    this.pageSnapping = false,
-    this.onDayLongPressed,
-    this.dayCrossAxisAlignment = CrossAxisAlignment.center,
-    this.dayMainAxisAlignment = MainAxisAlignment.center,
-    this.showIconBehindDayText = false,
-    this.pageScrollPhysics = const ScrollPhysics(),
-    this.shouldShowTransform = true,
-    this.maxDot = 5
-  }) : super(key: key);
+  const CalendarCarousel(
+      {Key? key,
+      this.viewportFraction = 1.0,
+      this.prevDaysTextStyle,
+      this.daysTextStyle,
+      this.nextDaysTextStyle,
+      this.prevMonthDayBorderColor = Colors.transparent,
+      this.thisMonthDayBorderColor = Colors.transparent,
+      this.nextMonthDayBorderColor = Colors.transparent,
+      this.dayPadding = 2.0,
+      this.height = double.infinity,
+      this.width = double.infinity,
+      this.todayTextStyle,
+      this.dayButtonColor = Colors.transparent,
+      this.todayBorderColor = Colors.red,
+      this.todayButtonColor = Colors.red,
+      this.selectedDateTime,
+      this.targetDateTime,
+      this.selectedDayTextStyle,
+      this.selectedDayBorderColor = Colors.green,
+      this.selectedDayButtonColor = Colors.green,
+      this.daysHaveCircularBorder,
+      this.disableDayPressed = false,
+      this.onDayPressed,
+      this.weekdayTextStyle = const TextStyle(),
+      this.iconColor = Colors.blueAccent,
+      this.headerTextStyle,
+      this.headerText,
+      this.weekendTextStyle,
+      this.markedDatesMap,
+      this.markedDateShowIcon = false,
+      this.markedDateIconBorderColor,
+      this.markedDateIconMaxShown = 2,
+      this.markedDateIconMargin = 5.0,
+      this.markedDateIconOffset = 5.0,
+      this.markedDateIconBuilder,
+      this.markedDateMoreShowTotal,
+      this.markedDateMoreCustomDecoration,
+      this.markedDateCustomShapeBorder,
+      this.markedDateCustomTextStyle,
+      this.markedDateMoreCustomTextStyle,
+      this.markedDateWidget,
+      this.multipleMarkedDates,
+      this.headerMargin = const EdgeInsets.symmetric(vertical: 16.0),
+      this.childAspectRatio = 1.0,
+      this.weekDayMargin = const EdgeInsets.only(bottom: 4.0),
+      this.weekDayPadding = const EdgeInsets.all(0.0),
+      this.weekDayBackgroundColor = Colors.transparent,
+      this.customWeekDayBuilder,
+      this.customDayBuilder,
+      this.showWeekDays = true,
+      this.weekFormat = false,
+      this.showHeader = true,
+      this.showHeaderButton = true,
+      this.leftButtonIcon,
+      this.rightButtonIcon,
+      this.customGridViewPhysics,
+      this.onCalendarChanged,
+      this.locale = "en",
+      this.firstDayOfWeek,
+      this.minSelectedDate,
+      this.maxSelectedDate,
+      this.inactiveDaysTextStyle,
+      this.inactiveWeekendTextStyle,
+      this.headerTitleTouchable = false,
+      this.onHeaderTitlePressed,
+      this.onLeftArrowPressed,
+      this.onRightArrowPressed,
+      this.weekDayFormat = WeekdayFormat.short,
+      this.staticSixWeekFormat = false,
+      this.isScrollable = true,
+      this.scrollDirection = Axis.horizontal,
+      this.showOnlyCurrentMonthDate = false,
+      this.pageSnapping = false,
+      this.onDayLongPressed,
+      this.dayCrossAxisAlignment = CrossAxisAlignment.center,
+      this.dayMainAxisAlignment = MainAxisAlignment.center,
+      this.showIconBehindDayText = false,
+      this.pageScrollPhysics = const ScrollPhysics(),
+      this.shouldShowTransform = true,
+      this.maxDot = 5})
+      : super(key: key);
 
   @override
   State<CalendarCarousel<T>> createState() => _CalendarState<T>();
@@ -342,7 +341,8 @@ class _CalendarState<T extends EventInterface>
           CalendarHeader(
             showHeader: widget.showHeader,
             headerMargin: widget.headerMargin,
-            headerTitle: headerText ?? (widget.weekFormat
+            headerTitle: headerText ??
+                (widget.weekFormat
                     ? _localeDate.format(this._weeks[this._pageNum].first)
                     : _localeDate.format(this._dates[this._pageNum])),
             headerTextStyle: widget.headerTextStyle,
@@ -1035,11 +1035,11 @@ class _CalendarState<T extends EventInterface>
                   padding: EdgeInsets.all(4.0),
                   width: markedDateMoreShowTotal ? 18 : null,
                   height: markedDateMoreShowTotal ? 18 : null,
-                  decoration: markedDateMoreCustomDecoration ?? BoxDecoration(
-                          color: Colors.red,
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(1000.0)),
-                        ),
+                  decoration: markedDateMoreCustomDecoration ??
+                      BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.all(Radius.circular(1000.0)),
+                      ),
                   child: Center(
                     child: Text(
                       markedDateMoreShowTotal
@@ -1048,7 +1048,8 @@ class _CalendarState<T extends EventInterface>
                       semanticsLabel: markedDateMoreShowTotal
                           ? (count + markedDateIconMaxShown).toString()
                           : ('$count+'),
-                      style: markedDateMoreCustomTextStyle ?? TextStyle(
+                      style: markedDateMoreCustomTextStyle ??
+                          TextStyle(
                               fontSize: 9.0,
                               color: Colors.white,
                               fontWeight: FontWeight.normal),
