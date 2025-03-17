@@ -5,7 +5,7 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
     show CalendarCarousel;
 import 'package:intl/intl.dart' show DateFormat;
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({final Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Calendar Carousel Example'),
+      home: const MyHomePage(title: 'Flutter Calendar Carousel Example'),
     );
   }
 }
@@ -59,9 +59,9 @@ class _MyHomePageState extends State<MyHomePage> {
   static final Widget _eventIcon = DecoratedBox(
     decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(1000)),
+        borderRadius: const BorderRadius.all(Radius.circular(1000)),
         border: Border.all(color: Colors.blue, width: 2)),
-    child: Icon(
+    child: const Icon(
       Icons.person,
       color: Colors.amber,
     ),
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: 'Event 1',
           icon: _eventIcon,
           dot: Container(
-            margin: EdgeInsets.symmetric(horizontal: 1),
+            margin: const EdgeInsets.symmetric(horizontal: 1),
             color: Colors.red,
             height: 5,
             width: 5,
@@ -144,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
           debugPrint(event.title);
         }
       },
-      weekendTextStyle: TextStyle(
+      weekendTextStyle: const TextStyle(
         color: Colors.red,
       ),
       thisMonthDayBorderColor: Colors.grey,
@@ -156,20 +156,20 @@ class _MyHomePageState extends State<MyHomePage> {
       selectedDateTime: _currentDate2,
       showIconBehindDayText: true,
 //          daysHaveCircularBorder: false, /// null for not rendering any border, true for circular border, false for rectangular border
-      customGridViewPhysics: NeverScrollableScrollPhysics(),
+      customGridViewPhysics: const NeverScrollableScrollPhysics(),
       markedDateShowIcon: true,
       markedDateIconMaxShown: 2,
-      selectedDayTextStyle: TextStyle(
+      selectedDayTextStyle: const TextStyle(
         color: Colors.yellow,
       ),
-      todayTextStyle: TextStyle(
+      todayTextStyle: const TextStyle(
         color: Colors.blue,
       ),
       markedDateIconBuilder: (final event) {
-        return event.icon ?? Icon(Icons.help_outline);
+        return event.icon ?? const Icon(Icons.help_outline);
       },
-      minSelectedDate: _currentDate.subtract(Duration(days: 360)),
-      maxSelectedDate: _currentDate.add(Duration(days: 360)),
+      minSelectedDate: _currentDate.subtract(const Duration(days: 360)),
+      maxSelectedDate: _currentDate.add(const Duration(days: 360)),
       todayButtonColor: Colors.transparent,
       todayBorderColor: Colors.green,
       markedDateMoreShowTotal:
@@ -189,7 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
       },
       daysHaveCircularBorder: true,
       showOnlyCurrentMonthDate: false,
-      weekendTextStyle: TextStyle(
+      weekendTextStyle: const TextStyle(
         color: Colors.red,
       ),
       thisMonthDayBorderColor: Colors.grey,
@@ -199,15 +199,15 @@ class _MyHomePageState extends State<MyHomePage> {
       height: 420,
       selectedDateTime: _currentDate2,
       targetDateTime: _targetDateTime,
-      customGridViewPhysics: NeverScrollableScrollPhysics(),
+      customGridViewPhysics: const NeverScrollableScrollPhysics(),
       markedDateCustomShapeBorder:
-          CircleBorder(side: BorderSide(color: Colors.yellow)),
-      markedDateCustomTextStyle: TextStyle(
+          const CircleBorder(side: BorderSide(color: Colors.yellow)),
+      markedDateCustomTextStyle: const TextStyle(
         fontSize: 18,
         color: Colors.blue,
       ),
       showHeader: false,
-      todayTextStyle: TextStyle(
+      todayTextStyle: const TextStyle(
         color: Colors.blue,
       ),
       // markedDateShowIcon: true,
@@ -218,16 +218,16 @@ class _MyHomePageState extends State<MyHomePage> {
       // markedDateMoreShowTotal:
       //     true,
       todayButtonColor: Colors.yellow,
-      selectedDayTextStyle: TextStyle(
+      selectedDayTextStyle: const TextStyle(
         color: Colors.yellow,
       ),
-      minSelectedDate: _currentDate.subtract(Duration(days: 360)),
-      maxSelectedDate: _currentDate.add(Duration(days: 360)),
-      prevDaysTextStyle: TextStyle(
+      minSelectedDate: _currentDate.subtract(const Duration(days: 360)),
+      maxSelectedDate: _currentDate.add(const Duration(days: 360)),
+      prevDaysTextStyle: const TextStyle(
         fontSize: 16,
         color: Colors.pinkAccent,
       ),
-      inactiveDaysTextStyle: TextStyle(
+      inactiveDaysTextStyle: const TextStyle(
         color: Colors.tealAccent,
         fontSize: 16,
       ),
@@ -253,12 +253,12 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               //custom icon
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 16),
+                margin: const EdgeInsets.symmetric(horizontal: 16),
                 child: calendarCarousel,
               ),
               //custom icon without header
               Container(
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   horizontal: 16,
                 ).copyWith(
                   top: 30,
@@ -269,13 +269,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     Expanded(
                         child: Text(
                       _currentMonth,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
                       ),
                     )),
                     TextButton(
-                      child: Text('PREV'),
+                      child: const Text('PREV'),
                       onPressed: () {
                         setState(() {
                           _targetDateTime = DateTime(
@@ -286,7 +286,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                     ),
                     TextButton(
-                      child: Text('NEXT'),
+                      child: const Text('NEXT'),
                       onPressed: () {
                         setState(() {
                           _targetDateTime = DateTime(
@@ -300,7 +300,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 16),
+                margin: const EdgeInsets.symmetric(horizontal: 16),
                 child: calendarCarouselNoHeader,
               ),
             ],

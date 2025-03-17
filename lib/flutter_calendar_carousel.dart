@@ -399,7 +399,7 @@ class _CalendarState<T extends EventInterface>
                 widget.weekFormat ? this._weeks.length : this._dates.length,
             physics: widget.isScrollable
                 ? widget.pageScrollPhysics
-                : NeverScrollableScrollPhysics(),
+                : const NeverScrollableScrollPhysics(),
             scrollDirection: widget.scrollDirection,
             onPageChanged: (final index) {
               this._setDate(index);
@@ -495,7 +495,7 @@ class _CalendarState<T extends EventInterface>
                     markedDatesMap.getEvents(now).isNotEmpty
                 ? widget.markedDateCustomShapeBorder
                 : widget.daysHaveCircularBorder == null
-                    ? CircleBorder()
+                    ? const CircleBorder()
                     : widget.daysHaveCircularBorder ?? false
                         ? CircleBorder(
                             side: BorderSide(
@@ -913,7 +913,7 @@ class _CalendarState<T extends EventInterface>
         0 >=
             minDate
                 .add(Duration(days: 7 * cnt))
-                .difference(maxDate.add(Duration(days: 7)))
+                .difference(maxDate.add(const Duration(days: 7)))
                 .inDays;
         cnt++) {
       week.add(_getDaysInWeek(minDate.add(Duration(days: 7 * cnt))));
@@ -950,7 +950,8 @@ class _CalendarState<T extends EventInterface>
         });
 
         _controller.animateToPage(page,
-            duration: Duration(milliseconds: 1), curve: Threshold(0));
+            duration: const Duration(milliseconds: 1),
+            curve: const Threshold(0));
       } else {
         setState(() {
           this._pageNum = page;
@@ -959,7 +960,8 @@ class _CalendarState<T extends EventInterface>
           _endWeekday = _lastDayOfWeek(_dates[page]).weekday - firstDayOfWeek;
         });
         _controller.animateToPage(page,
-            duration: Duration(milliseconds: 1), curve: Threshold(0));
+            duration: const Duration(milliseconds: 1),
+            curve: const Threshold(0));
       }
 
       //call callback
@@ -982,7 +984,7 @@ class _CalendarState<T extends EventInterface>
     } else {
       return Container(
         height: double.infinity,
-        padding: EdgeInsets.only(bottom: 4),
+        padding: const EdgeInsets.only(bottom: 4),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisSize: MainAxisSize.max,
@@ -1040,11 +1042,11 @@ class _CalendarState<T extends EventInterface>
                 bottom: 0,
                 right: 0,
                 child: Container(
-                  padding: EdgeInsets.all(4),
+                  padding: const EdgeInsets.all(4),
                   width: markedDateMoreShowTotal ? 18 : null,
                   height: markedDateMoreShowTotal ? 18 : null,
                   decoration: markedDateMoreCustomDecoration ??
-                      BoxDecoration(
+                      const BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.all(Radius.circular(1000)),
                       ),
@@ -1057,7 +1059,7 @@ class _CalendarState<T extends EventInterface>
                           ? (count + markedDateIconMaxShown).toString()
                           : ('$count+'),
                       style: markedDateMoreCustomTextStyle ??
-                          TextStyle(
+                          const TextStyle(
                               fontSize: 9,
                               color: Colors.white,
                               fontWeight: FontWeight.normal),

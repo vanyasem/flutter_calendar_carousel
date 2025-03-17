@@ -7,7 +7,7 @@ import 'package:intl/intl.dart' show DateFormat;
 
 void main() {
   final locale = DateFormat.yMMM('en_US');
-  final margin = const EdgeInsets.only(bottom: 4);
+  const margin = EdgeInsets.only(bottom: 4);
 
   testWidgets('test short weekday row', (final WidgetTester tester) async {
     await tester.pumpWidget(wrapped(

@@ -16,7 +16,7 @@ void main() {
     //  Build our app and trigger a frame.
     final carousel = CalendarCarousel(
       daysHaveCircularBorder: null,
-      weekendTextStyle: TextStyle(
+      weekendTextStyle: const TextStyle(
         color: Colors.red,
       ),
       thisMonthDayBorderColor: Colors.grey,
@@ -24,17 +24,17 @@ void main() {
       weekFormat: true,
       height: 200,
       showIconBehindDayText: true,
-      customGridViewPhysics: NeverScrollableScrollPhysics(),
+      customGridViewPhysics: const NeverScrollableScrollPhysics(),
       markedDateShowIcon: true,
       markedDateIconMaxShown: 2,
-      selectedDayTextStyle: TextStyle(
+      selectedDayTextStyle: const TextStyle(
         color: Colors.yellow,
       ),
-      todayTextStyle: TextStyle(
+      todayTextStyle: const TextStyle(
         color: Colors.blue,
       ),
       markedDateIconBuilder: (final Event event) {
-        return event.icon ?? Icon(Icons.help_outline);
+        return event.icon ?? const Icon(Icons.help_outline);
       },
       todayButtonColor: Colors.transparent,
       todayBorderColor: Colors.green,
@@ -56,8 +56,8 @@ void main() {
 
     expect(pressedDay, isNull);
 
-    await tester.tap(
-        find.text(DateTime.now().subtract(Duration(days: 1)).day.toString()));
+    await tester.tap(find
+        .text(DateTime.now().subtract(const Duration(days: 1)).day.toString()));
 
     await tester.pump();
 

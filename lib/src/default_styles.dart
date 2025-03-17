@@ -41,7 +41,7 @@ final TextStyle defaultInactiveWeekendTextStyle = TextStyle(
   fontSize: 14,
 );
 final Widget defaultMarkedDateWidget = Container(
-  margin: EdgeInsets.symmetric(horizontal: 1),
+  margin: const EdgeInsets.symmetric(horizontal: 1),
   color: Colors.blueAccent,
   height: 4,
   width: 4,
