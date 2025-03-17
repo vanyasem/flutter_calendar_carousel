@@ -54,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   DateTime _currentDate2 = DateTime(2019, 2, 3);
   String _currentMonth = DateFormat.yMMM().format(DateTime(2019, 2, 3));
   DateTime _targetDateTime = DateTime(2019, 2, 3);
+
 //  List<DateTime> _markedDate = [DateTime(2018, 9, 20), DateTime(2018, 10, 11)];
   static final Widget _eventIcon = Container(
     decoration: BoxDecoration(
@@ -254,7 +255,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 16.0),
                 child: calendarCarousel,
-              ), // This trailing comma makes auto-formatting nicer for build methods.
+              ),
               //custom icon without header
               Container(
                 margin: EdgeInsets.only(
@@ -301,7 +302,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 16.0),
                 child: calendarCarouselNoHeader,
-              ), //
+              ),
             ],
           ),
         ));
