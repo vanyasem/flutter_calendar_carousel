@@ -22,7 +22,7 @@ void main() {
       thisMonthDayBorderColor: Colors.grey,
       headerText: 'Custom Header',
       weekFormat: true,
-      height: 200.0,
+      height: 200,
       showIconBehindDayText: true,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
       markedDateShowIcon: true,

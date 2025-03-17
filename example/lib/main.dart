@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(1000)),
-        border: Border.all(color: Colors.blue, width: 2.0)),
+        border: Border.all(color: Colors.blue, width: 2)),
     child: Icon(
       Icons.person,
       color: Colors.amber,
@@ -75,10 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
           title: 'Event 1',
           icon: _eventIcon,
           dot: Container(
-            margin: EdgeInsets.symmetric(horizontal: 1.0),
+            margin: EdgeInsets.symmetric(horizontal: 1),
             color: Colors.red,
-            height: 5.0,
-            width: 5.0,
+            height: 5,
+            width: 5,
           ),
         ),
         Event(
@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
       headerText: 'Custom Header',
       weekFormat: true,
       markedDatesMap: _markedDateMap,
-      height: 200.0,
+      height: 200,
       selectedDateTime: _currentDate2,
       showIconBehindDayText: true,
 //          daysHaveCircularBorder: false, /// null for not rendering any border, true for circular border, false for rectangular border
@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
       weekFormat: false,
 //      firstDayOfWeek: 4,
       markedDatesMap: _markedDateMap,
-      height: 420.0,
+      height: 420,
       selectedDateTime: _currentDate2,
       targetDateTime: _targetDateTime,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
@@ -253,16 +253,16 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               //custom icon
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.0),
+                margin: EdgeInsets.symmetric(horizontal: 16),
                 child: calendarCarousel,
               ),
               //custom icon without header
               Container(
-                margin: EdgeInsets.only(
-                  top: 30.0,
-                  bottom: 16.0,
-                  left: 16.0,
-                  right: 16.0,
+                margin: EdgeInsets.symmetric(
+                  horizontal: 16,
+                ).copyWith(
+                  top: 30,
+                  bottom: 16,
                 ),
                 child: Row(
                   children: <Widget>[
@@ -271,7 +271,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       _currentMonth,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 24.0,
+                        fontSize: 24,
                       ),
                     )),
                     TextButton(
@@ -300,7 +300,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.0),
+                margin: EdgeInsets.symmetric(horizontal: 16),
                 child: calendarCarouselNoHeader,
               ),
             ],
