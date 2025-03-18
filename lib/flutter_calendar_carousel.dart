@@ -560,7 +560,7 @@ class _CalendarState<T extends EventInterface>
                       if (widget.markedDatesMap != null)
                         _renderMarkedMapContainer(now)
                       else
-                        Container(),
+                        const SizedBox.shrink(),
                       getDayContainer(
                         isSelectable,
                         index,
@@ -590,7 +590,7 @@ class _CalendarState<T extends EventInterface>
                       if (widget.markedDatesMap != null)
                         _renderMarkedMapContainer(now)
                       else
-                        Container(),
+                        const SizedBox.shrink(),
                     ],
           ),
         ),
@@ -694,7 +694,7 @@ class _CalendarState<T extends EventInterface>
               textStyle = widget.nextDaysTextStyle;
               defaultTextStyle = defaultNextDaysTextStyle;
             } else {
-              return Container();
+              return const SizedBox.shrink();
             }
             final EventList<T>? markedDatesMap = widget.markedDatesMap;
             if (widget.markedDateCustomTextStyle != null &&
@@ -812,7 +812,7 @@ class _CalendarState<T extends EventInterface>
                     textStyle = widget.nextDaysTextStyle;
                     defaultTextStyle = defaultNextDaysTextStyle;
                   } else {
-                    return Container();
+                    return const SizedBox.shrink();
                   }
                   bool isSelectable = true;
                   if (now.millisecondsSinceEpoch <

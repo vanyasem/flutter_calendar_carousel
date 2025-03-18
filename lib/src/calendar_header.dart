@@ -59,15 +59,21 @@ class CalendarHeader extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  if (showHeaderButtons) _leftButton() else Container(),
+                  if (showHeaderButtons)
+                    _leftButton()
+                  else
+                    const SizedBox.shrink(),
                   if (isTitleTouchable)
                     _headerTouchable()
                   else
                     Text(headerTitle, style: getTextStyle),
-                  if (showHeaderButtons) _rightButton() else Container(),
+                  if (showHeaderButtons)
+                    _rightButton()
+                  else
+                    const SizedBox.shrink(),
                 ],
               ),
             ),
           )
-          : Container();
+          : const SizedBox.shrink();
 }

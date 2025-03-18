@@ -126,5 +126,5 @@ class WeekdayRow extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: _renderWeekDays(),
           )
-          : Container();
+          : const SizedBox.shrink();
 }
