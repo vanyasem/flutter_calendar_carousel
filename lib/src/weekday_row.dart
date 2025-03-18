@@ -10,6 +10,7 @@ class WeekdayRow extends StatelessWidget {
     this.customWeekdayBuilder, {
     super.key,
     required this.showWeekdays,
+    required this.capitalizeWeekDays,
     required this.weekdayFormat,
     required this.weekdayMargin,
     required this.weekdayPadding,
@@ -20,6 +21,7 @@ class WeekdayRow extends StatelessWidget {
 
   final WeekdayBuilder? customWeekdayBuilder;
   final bool showWeekdays;
+  final bool capitalizeWeekDays;
   final WeekdayFormat weekdayFormat;
   final EdgeInsets weekdayMargin;
   final EdgeInsets weekdayPadding;
@@ -44,7 +46,7 @@ class WeekdayRow extends StatelessWidget {
               child: DefaultTextStyle(
                 style: defaultWeekdayTextStyle,
                 child: Text(
-                  weekDayName,
+                  capitalizeWeekDays ? weekDayName.toUpperCase() : weekDayName,
                   semanticsLabel: weekDayName,
                   style: weekdayTextStyle,
                 ),
