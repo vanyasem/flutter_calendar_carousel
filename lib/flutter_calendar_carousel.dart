@@ -54,7 +54,7 @@ typedef WeekdayBuilder = Widget Function(int weekday, String weekdayName);
 
 class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   const CalendarCarousel({
-    final Key? key,
+    super.key,
     this.viewportFraction = 1,
     this.prevDaysTextStyle,
     this.daysTextStyle,
@@ -134,7 +134,7 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
     this.pageScrollPhysics = const ScrollPhysics(),
     this.shouldShowTransform = true,
     this.maxDot = 5,
-  }) : super(key: key);
+  });
 
   final double viewportFraction;
   final TextStyle? prevDaysTextStyle;
