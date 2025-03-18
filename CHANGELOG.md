@@ -1,6 +1,7 @@
 ## [2.4.6]
 
 - Add ability to capitalize week days text by setting `capitalizeWeekDays`
+- Add ability to configure day border radius by setting `daysBorderRadius`
 
 ## [2.4.5]
 
