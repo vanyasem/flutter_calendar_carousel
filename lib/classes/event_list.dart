@@ -23,7 +23,7 @@ class EventList<T> {
 
   bool remove(final DateTime date, final T event) {
     final List<T>? eventsOfDate = events[date];
-    return eventsOfDate != null ? eventsOfDate.remove(event) : false;
+    return eventsOfDate != null && eventsOfDate.remove(event);
   }
 
   List<T> removeAll(final DateTime date) {
