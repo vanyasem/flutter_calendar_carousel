@@ -303,7 +303,7 @@ class _CalendarState<T extends EventInterface>
   void didUpdateWidget(final CalendarCarousel<T> oldWidget) {
     if (widget.targetDateTime != null && widget.targetDateTime != _targetDate) {
       _init();
-      _setDate(_pageNum);
+      _setDate(page: _pageNum);
     }
 
     super.didUpdateWidget(oldWidget);
@@ -363,7 +363,7 @@ class _CalendarState<T extends EventInterface>
               widget.onLeftArrowPressed?.call();
 
               if (this._pageNum > 0) {
-                _setDate(this._pageNum - 1);
+                _setDate(page: this._pageNum - 1);
               }
             },
             onRightButtonPressed: () {
@@ -371,11 +371,11 @@ class _CalendarState<T extends EventInterface>
 
               if (widget.weekFormat) {
                 if (this._weeks.length - 1 > this._pageNum) {
-                  _setDate(this._pageNum + 1);
+                  _setDate(page: this._pageNum + 1);
                 }
               } else {
                 if (this._dates.length - 1 > this._pageNum) {
-                  _setDate(this._pageNum + 1);
+                  _setDate(page: this._pageNum + 1);
                 }
               }
             },
@@ -413,7 +413,7 @@ class _CalendarState<T extends EventInterface>
                       : const NeverScrollableScrollPhysics(),
               scrollDirection: widget.scrollDirection,
               onPageChanged: (final int index) {
-                this._setDate(index);
+                this._setDate(page: index, shouldJump: false);
               },
               controller: _controller,
               itemBuilder: (final BuildContext context, final int index) {
@@ -995,7 +995,7 @@ class _CalendarState<T extends EventInterface>
     //            : DateTime.now();
   }
 
-  void _setDate([final int page = -1]) {
+  void _setDate({final bool shouldJump = true, final int page = -1}) {
     if (page == -1) {
       setState(_setDatesAndWeeks);
     } else {
@@ -1005,11 +1005,13 @@ class _CalendarState<T extends EventInterface>
           this._targetDate = this._weeks[page].first;
         });
 
-        _controller.animateToPage(
-          page,
-          duration: const Duration(milliseconds: 1),
-          curve: const Threshold(0),
-        );
+        if (shouldJump) {
+          _controller.animateToPage(
+            page,
+            duration: const Duration(milliseconds: 1),
+            curve: const Threshold(0),
+          );
+        }
       } else {
         setState(() {
           this._pageNum = page;
@@ -1017,11 +1019,14 @@ class _CalendarState<T extends EventInterface>
           _startWeekday = _dates[page].weekday - firstDayOfWeek;
           _endWeekday = _lastDayOfWeek(_dates[page]).weekday - firstDayOfWeek;
         });
-        _controller.animateToPage(
-          page,
-          duration: const Duration(milliseconds: 1),
-          curve: const Threshold(0),
-        );
+
+        if (shouldJump) {
+          _controller.animateToPage(
+            page,
+            duration: const Duration(milliseconds: 1),
+            curve: const Threshold(0),
+          );
+        }
       }
 
       //call callback
