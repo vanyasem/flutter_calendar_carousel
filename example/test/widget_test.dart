@@ -14,7 +14,7 @@ void main() {
   testWidgets('Default test for Calendar Carousel',
       (final WidgetTester tester) async {
     //  Build our app and trigger a frame.
-    final carousel = CalendarCarousel(
+    final CalendarCarousel<Event> carousel = CalendarCarousel<Event>(
       daysHaveCircularBorder: null,
       weekendTextStyle: const TextStyle(
         color: Colors.red,
@@ -40,7 +40,7 @@ void main() {
       todayBorderColor: Colors.green,
       markedDateMoreShowTotal: true,
       // null for not showing hidden events indicator
-      onDayPressed: (final date, final event) {
+      onDayPressed: (final DateTime date, final List<Event> event) {
         pressedDay = date;
       },
     );

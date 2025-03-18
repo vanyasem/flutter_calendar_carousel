@@ -6,16 +6,16 @@ class EventList<T> {
   Map<DateTime, List<T>> events;
 
   void add(final DateTime date, final T event) {
-    final eventsOfDate = events[date];
+    final List<T>? eventsOfDate = events[date];
     if (eventsOfDate == null) {
-      events[date] = [event];
+      events[date] = <T>[event];
     } else {
       eventsOfDate.add(event);
     }
   }
 
   void addAll(final DateTime date, final List<T> events) {
-    final eventsOfDate = this.events[date];
+    final List<T>? eventsOfDate = this.events[date];
     if (eventsOfDate == null) {
       this.events[date] = events;
     } else {
@@ -24,12 +24,12 @@ class EventList<T> {
   }
 
   bool remove(final DateTime date, final T event) {
-    final eventsOfDate = events[date];
+    final List<T>? eventsOfDate = events[date];
     return eventsOfDate != null ? eventsOfDate.remove(event) : false;
   }
 
   List<T> removeAll(final DateTime date) {
-    return events.remove(date) ?? [];
+    return events.remove(date) ?? <T>[];
   }
 
   void clear() {
@@ -37,6 +37,6 @@ class EventList<T> {
   }
 
   List<T> getEvents(final DateTime date) {
-    return events[date] ?? [];
+    return events[date] ?? <T>[];
   }
 }

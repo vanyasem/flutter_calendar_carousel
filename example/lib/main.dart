@@ -68,8 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
   );
 
   final EventList<Event> _markedDateMap = EventList<Event>(
-    events: {
-      DateTime(2019, 2, 10): [
+    events: <DateTime, List<Event>>{
+      DateTime(2019, 2, 10): <Event>[
         Event(
           date: DateTime(2019, 2, 10),
           title: 'Event 1',
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
           icon: _eventIcon,
         ));
 
-    _markedDateMap.addAll(DateTime(2019, 2, 11), [
+    _markedDateMap.addAll(DateTime(2019, 2, 11), <Event>[
       Event(
         date: DateTime(2019, 2, 11),
         title: 'Event 1',
@@ -137,10 +137,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(final BuildContext context) {
     /// Example with custom icon
-    final calendarCarousel = CalendarCarousel<Event>(
-      onDayPressed: (final date, final events) {
+    final CalendarCarousel<Event> calendarCarousel = CalendarCarousel<Event>(
+      onDayPressed: (final DateTime date, final List<Event> events) {
         setState(() => _currentDate = date);
-        for (final event in events) {
+        for (final Event event in events) {
           debugPrint(event.title);
         }
       },
@@ -165,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
       todayTextStyle: const TextStyle(
         color: Colors.blue,
       ),
-      markedDateIconBuilder: (final event) {
+      markedDateIconBuilder: (final Event event) {
         return event.icon ?? const Icon(Icons.help_outline);
       },
       minSelectedDate: _currentDate.subtract(const Duration(days: 360)),
@@ -179,11 +179,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     /// Example Calendar Carousel without header and custom prev & next button
-    final calendarCarouselNoHeader = CalendarCarousel<Event>(
+    final CalendarCarousel<Event> calendarCarouselNoHeader =
+        CalendarCarousel<Event>(
       todayBorderColor: Colors.green,
-      onDayPressed: (final date, final events) {
+      onDayPressed: (final DateTime date, final List<Event> events) {
         setState(() => _currentDate2 = date);
-        for (final event in events) {
+        for (final Event event in events) {
           debugPrint(event.title);
         }
       },

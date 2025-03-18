@@ -27,7 +27,7 @@ class WeekdayRow extends StatelessWidget {
   final int firstDayOfWeek;
 
   Widget _weekdayContainer(final int weekday, final String weekDayName) {
-    final customWeekdayBuilder = this.customWeekdayBuilder;
+    final WeekdayBuilder? customWeekdayBuilder = this.customWeekdayBuilder;
     return customWeekdayBuilder != null
         ? customWeekdayBuilder(weekday, weekDayName)
         : Expanded(
@@ -86,10 +86,10 @@ class WeekdayRow extends StatelessWidget {
 
   // TODO - locale issues
   List<Widget> _renderWeekDays() {
-    final List<Widget> list = [];
+    final List<Widget> list = <Widget>[];
 
     /// because of number of days in a week is 7, so it would be easier to count it til 7.
-    for (var i = firstDayOfWeek, count = 0;
+    for (int i = firstDayOfWeek, count = 0;
         count < 7;
         i = (i + 1) % 7, count++) {
       String weekDay;

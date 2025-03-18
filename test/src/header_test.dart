@@ -3,14 +3,14 @@ import 'package:flutter_calendar_carousel/src/calendar_header.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  const title = 'Test title';
-  const margin = EdgeInsets.symmetric(vertical: 16);
-  const iconColor = Colors.blueAccent;
+  const String title = 'Test title';
+  const EdgeInsets margin = EdgeInsets.symmetric(vertical: 16);
+  const MaterialAccentColor iconColor = Colors.blueAccent;
 
   testWidgets('Verify Header Defaults', (final WidgetTester tester) async {
-    var headerTapped = false;
-    var leftPressed = false;
-    var rightPressed = false;
+    bool headerTapped = false;
+    bool leftPressed = false;
+    bool rightPressed = false;
 
     await tester.pumpWidget(wrapped(CalendarHeader(
       headerTitle: title,
@@ -45,7 +45,7 @@ void main() {
   });
 
   testWidgets('Verify No header Renders', (final WidgetTester tester) async {
-    final noHeaderEmpty = CalendarHeader(
+    final CalendarHeader noHeaderEmpty = CalendarHeader(
       showHeader: false,
       headerTitle: '',
       onLeftButtonPressed: () {},
@@ -71,7 +71,7 @@ void main() {
     )));
 
     // the header TextButton Should not render
-    final touchableHeader = find.byType(TextButton);
+    final Finder touchableHeader = find.byType(TextButton);
 
     expect(touchableHeader, findsNothing);
   });
@@ -89,7 +89,7 @@ void main() {
     )));
 
     // the header IconButtons Should not render
-    final headerButton = find.byType(IconButton);
+    final Finder headerButton = find.byType(IconButton);
 
     expect(headerButton, findsNothing);
   });

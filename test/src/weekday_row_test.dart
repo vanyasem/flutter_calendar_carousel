@@ -6,8 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart' show DateFormat;
 
 void main() {
-  final locale = DateFormat.yMMM('en_US');
-  const margin = EdgeInsets.only(bottom: 4);
+  final DateFormat locale = DateFormat.yMMM('en_US');
+  const EdgeInsets margin = EdgeInsets.only(bottom: 4);
 
   testWidgets('test short weekday row', (final WidgetTester tester) async {
     await tester.pumpWidget(wrapped(
@@ -101,7 +101,7 @@ void main() {
   });
 
   testWidgets('test row does not render', (final WidgetTester tester) async {
-    final emptyContainer = WeekdayRow(
+    final WeekdayRow emptyContainer = WeekdayRow(
       0,
       null,
       weekdayPadding: EdgeInsets.zero,
