@@ -1,6 +1,7 @@
 ## [2.4.5]
 
 BREAKING: Increase min supported Dart SDK to `3.7.0`
+FIX: "Calendar snaps to page on half the page manually scrolled" [#387](https://github.com/hyochan/flutter_calendar_carousel/issues/387)
 
 ## [2.4.4]
 
