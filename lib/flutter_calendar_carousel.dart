@@ -998,9 +998,7 @@ class _CalendarState<T extends EventInterface>
 
   void _setDate([final int page = -1]) {
     if (page == -1) {
-      setState(() {
-        _setDatesAndWeeks();
-      });
+      setState(_setDatesAndWeeks);
     } else {
       if (widget.weekFormat) {
         setState(() {
