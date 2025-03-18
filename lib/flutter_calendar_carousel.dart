@@ -915,7 +915,7 @@ class _CalendarState<T extends EventInterface>
     });
     widget.onDayPressed?.call(
       picked,
-      widget.markedDatesMap?.getEvents(picked) ?? const [],
+      widget.markedDatesMap?.getEvents(picked) ?? <T>[],
     );
   }
 
@@ -934,7 +934,7 @@ class _CalendarState<T extends EventInterface>
       });
       widget.onDayPressed?.call(
         selected,
-        widget.markedDatesMap?.getEvents(selected) ?? const [],
+        widget.markedDatesMap?.getEvents(selected) ?? <T>[],
       );
     }
   }
