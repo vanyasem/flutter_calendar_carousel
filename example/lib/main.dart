@@ -88,21 +88,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     /// Add more events to _markedDateMap EventList
-    _markedDateMap.add(
-      DateTime(2019, 2, 25),
-      Event(date: DateTime(2019, 2, 25), title: 'Event 5', icon: _eventIcon),
-    );
-
-    _markedDateMap.add(
-      DateTime(2019, 2, 10),
-      Event(date: DateTime(2019, 2, 10), title: 'Event 4', icon: _eventIcon),
-    );
-
-    _markedDateMap.addAll(DateTime(2019, 2, 11), <Event>[
-      Event(date: DateTime(2019, 2, 11), title: 'Event 1', icon: _eventIcon),
-      Event(date: DateTime(2019, 2, 11), title: 'Event 2', icon: _eventIcon),
-      Event(date: DateTime(2019, 2, 11), title: 'Event 3', icon: _eventIcon),
-    ]);
+    _markedDateMap
+      ..add(
+        DateTime(2019, 2, 25),
+        Event(date: DateTime(2019, 2, 25), title: 'Event 5', icon: _eventIcon),
+      )
+      ..add(
+        DateTime(2019, 2, 10),
+        Event(date: DateTime(2019, 2, 10), title: 'Event 4', icon: _eventIcon),
+      )
+      ..addAll(DateTime(2019, 2, 11), <Event>[
+        Event(date: DateTime(2019, 2, 11), title: 'Event 1', icon: _eventIcon),
+        Event(date: DateTime(2019, 2, 11), title: 'Event 2', icon: _eventIcon),
+        Event(date: DateTime(2019, 2, 11), title: 'Event 3', icon: _eventIcon),
+      ]);
     super.initState();
   }
 
