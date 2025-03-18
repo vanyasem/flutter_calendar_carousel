@@ -559,7 +559,10 @@ class _CalendarState<T extends EventInterface>
                     : widget.dayButtonColor,
             padding: EdgeInsets.all(widget.dayPadding),
           ),
-          onPressed: widget.disableDayPressed ? null : () => _onDayPressed(now),
+          onPressed:
+              widget.disableDayPressed || !isSelectable
+                  ? null
+                  : () => _onDayPressed(now),
           child: Stack(
             children:
                 widget.showIconBehindDayText

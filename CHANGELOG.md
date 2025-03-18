@@ -1,3 +1,7 @@
+## [2.4.7]
+
+- FIX: Inactive (disabled) days were still clickable (and had an InkWell animation)
+
 ## [2.4.6]
 
 - Add ability to capitalize week days text by setting `capitalizeWeekDays`
