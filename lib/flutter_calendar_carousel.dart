@@ -643,98 +643,87 @@ class _CalendarState<T extends EventInterface>
           ),
         );
       },
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            child: SizedBox.expand(
-              child: GridView.count(
-                physics: widget.customGridViewPhysics,
-                crossAxisCount: 7,
-                childAspectRatio: widget.childAspectRatio,
-                padding: EdgeInsets.zero,
-                children: List<Widget>.generate(
-                  totalItemCount,
+      child: GridView.count(
+        physics: widget.customGridViewPhysics,
+        crossAxisCount: 7,
+        childAspectRatio: widget.childAspectRatio,
+        padding: EdgeInsets.zero,
+        children: List<Widget>.generate(
+          totalItemCount,
 
-                  /// last day of month + weekday
-                  (final int index) {
-                    final DateTime? selectedDateTime = widget.selectedDateTime;
-                    final bool isToday =
-                        DateTime.now().day == index + 1 - _startWeekday &&
-                        DateTime.now().month == month &&
-                        DateTime.now().year == year;
-                    final bool isSelectedDay =
-                        selectedDateTime != null &&
-                        selectedDateTime.year == year &&
-                        selectedDateTime.month == month &&
-                        selectedDateTime.day == index + 1 - _startWeekday;
-                    final bool isPrevMonthDay = index < _startWeekday;
-                    final bool isNextMonthDay =
-                        index >=
-                        (DateTime(year, month + 1, 0).day) + _startWeekday;
-                    final bool isThisMonthDay =
-                        !isPrevMonthDay && !isNextMonthDay;
+          /// last day of month + weekday
+          (final int index) {
+            final DateTime? selectedDateTime = widget.selectedDateTime;
+            final bool isToday =
+                DateTime.now().day == index + 1 - _startWeekday &&
+                DateTime.now().month == month &&
+                DateTime.now().year == year;
+            final bool isSelectedDay =
+                selectedDateTime != null &&
+                selectedDateTime.year == year &&
+                selectedDateTime.month == month &&
+                selectedDateTime.day == index + 1 - _startWeekday;
+            final bool isPrevMonthDay = index < _startWeekday;
+            final bool isNextMonthDay =
+                index >= (DateTime(year, month + 1, 0).day) + _startWeekday;
+            final bool isThisMonthDay = !isPrevMonthDay && !isNextMonthDay;
 
-                    DateTime now = DateTime(year, month);
-                    TextStyle? textStyle;
-                    TextStyle defaultTextStyle;
-                    if (isPrevMonthDay && !widget.showOnlyCurrentMonthDate) {
-                      now = now.subtract(Duration(days: _startWeekday - index));
-                      textStyle = widget.prevDaysTextStyle;
-                      defaultTextStyle = defaultPrevDaysTextStyle;
-                    } else if (isThisMonthDay) {
-                      now = DateTime(year, month, index + 1 - _startWeekday);
-                      textStyle =
-                          isSelectedDay
-                              ? widget.selectedDayTextStyle
-                              : isToday
-                              ? widget.todayTextStyle
-                              : widget.daysTextStyle;
-                      defaultTextStyle =
-                          isSelectedDay
-                              ? defaultSelectedDayTextStyle
-                              : isToday
-                              ? defaultTodayTextStyle
-                              : defaultDaysTextStyle;
-                    } else if (!widget.showOnlyCurrentMonthDate) {
-                      now = DateTime(year, month, index + 1 - _startWeekday);
-                      textStyle = widget.nextDaysTextStyle;
-                      defaultTextStyle = defaultNextDaysTextStyle;
-                    } else {
-                      return Container();
-                    }
-                    final EventList<T>? markedDatesMap = widget.markedDatesMap;
-                    if (widget.markedDateCustomTextStyle != null &&
-                        markedDatesMap != null &&
-                        markedDatesMap.getEvents(now).isNotEmpty) {
-                      textStyle = widget.markedDateCustomTextStyle;
-                    }
-                    bool isSelectable = true;
-                    if (now.millisecondsSinceEpoch <
-                        minDate.millisecondsSinceEpoch) {
-                      isSelectable = false;
-                    } else if (now.millisecondsSinceEpoch >
-                        maxDate.millisecondsSinceEpoch) {
-                      isSelectable = false;
-                    }
+            DateTime now = DateTime(year, month);
+            TextStyle? textStyle;
+            TextStyle defaultTextStyle;
+            if (isPrevMonthDay && !widget.showOnlyCurrentMonthDate) {
+              now = now.subtract(Duration(days: _startWeekday - index));
+              textStyle = widget.prevDaysTextStyle;
+              defaultTextStyle = defaultPrevDaysTextStyle;
+            } else if (isThisMonthDay) {
+              now = DateTime(year, month, index + 1 - _startWeekday);
+              textStyle =
+                  isSelectedDay
+                      ? widget.selectedDayTextStyle
+                      : isToday
+                      ? widget.todayTextStyle
+                      : widget.daysTextStyle;
+              defaultTextStyle =
+                  isSelectedDay
+                      ? defaultSelectedDayTextStyle
+                      : isToday
+                      ? defaultTodayTextStyle
+                      : defaultDaysTextStyle;
+            } else if (!widget.showOnlyCurrentMonthDate) {
+              now = DateTime(year, month, index + 1 - _startWeekday);
+              textStyle = widget.nextDaysTextStyle;
+              defaultTextStyle = defaultNextDaysTextStyle;
+            } else {
+              return Container();
+            }
+            final EventList<T>? markedDatesMap = widget.markedDatesMap;
+            if (widget.markedDateCustomTextStyle != null &&
+                markedDatesMap != null &&
+                markedDatesMap.getEvents(now).isNotEmpty) {
+              textStyle = widget.markedDateCustomTextStyle;
+            }
+            bool isSelectable = true;
+            if (now.millisecondsSinceEpoch < minDate.millisecondsSinceEpoch) {
+              isSelectable = false;
+            } else if (now.millisecondsSinceEpoch >
+                maxDate.millisecondsSinceEpoch) {
+              isSelectable = false;
+            }
 
-                    return renderDay(
-                      isSelectable,
-                      index,
-                      isSelectedDay,
-                      isToday,
-                      isPrevMonthDay,
-                      textStyle,
-                      defaultTextStyle,
-                      isNextMonthDay,
-                      isThisMonthDay,
-                      now,
-                    );
-                  },
-                ),
-              ),
-            ),
-          ),
-        ],
+            return renderDay(
+              isSelectable,
+              index,
+              isSelectedDay,
+              isToday,
+              isPrevMonthDay,
+              textStyle,
+              defaultTextStyle,
+              isNextMonthDay,
+              isThisMonthDay,
+              now,
+            );
+          },
+        ),
       ),
     );
   }
