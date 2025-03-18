@@ -286,7 +286,6 @@ class _CalendarState<T extends EventInterface>
     /// setup pageController
     _controller = PageController(
       initialPage: this._pageNum,
-      keepPage: true,
       viewportFraction: widget.viewportFraction,
 
       /// width percentage
@@ -608,7 +607,6 @@ class _CalendarState<T extends EventInterface>
         DateTime(
           _dates[slideIndex].year,
           _dates[slideIndex].month + 1,
-          1,
         ).weekday -
         firstDayOfWeek;
     final double screenWidth = MediaQuery.of(context).size.width;
@@ -676,7 +674,7 @@ class _CalendarState<T extends EventInterface>
                     final bool isThisMonthDay =
                         !isPrevMonthDay && !isNextMonthDay;
 
-                    DateTime now = DateTime(year, month, 1);
+                    DateTime now = DateTime(year, month);
                     TextStyle? textStyle;
                     TextStyle defaultTextStyle;
                     if (isPrevMonthDay && !widget.showOnlyCurrentMonthDate) {
@@ -877,7 +875,7 @@ class _CalendarState<T extends EventInterface>
 
   DateTime _createUTCMiddayDateTime(final DateTime date) {
     // Magic const: 12 is to maintain compatibility with date_utils
-    return DateTime.utc(date.year, date.month, date.day, 12, 0, 0);
+    return DateTime.utc(date.year, date.month, date.day, 12);
   }
 
   Iterable<DateTime> _daysInRange(final DateTime start, final DateTime end) {
@@ -952,7 +950,7 @@ class _CalendarState<T extends EventInterface>
           ).difference(DateTime(maxDate.year, maxDate.month)).inDays;
       cnt++
     ) {
-      date.add(DateTime(minDate.year, minDate.month + cnt, 1));
+      date.add(DateTime(minDate.year, minDate.month + cnt));
       if (0 ==
           date.last
               .difference(
@@ -988,7 +986,6 @@ class _CalendarState<T extends EventInterface>
         DateTime(
           date[currentDateIndex].year,
           date[currentDateIndex].month + 1,
-          1,
         ).weekday -
         firstDayOfWeek;
     this._dates = date;
@@ -1050,7 +1047,6 @@ class _CalendarState<T extends EventInterface>
         padding: const EdgeInsets.only(bottom: 4),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           children: _renderMarkedMap(now),
         ),
