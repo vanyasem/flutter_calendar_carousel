@@ -3,25 +3,29 @@ import 'package:flutter_calendar_carousel/src/calendar_header.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final title = 'Test title';
-  final margin = const EdgeInsets.symmetric(vertical: 16);
-  final iconColor = Colors.blueAccent;
+  const String title = 'Test title';
+  const EdgeInsets margin = EdgeInsets.symmetric(vertical: 16);
+  const MaterialAccentColor iconColor = Colors.blueAccent;
 
-  testWidgets('Verify Header Defaults', (WidgetTester tester) async {
-    var headerTapped = false;
-    var leftPressed = false;
-    var rightPressed = false;
+  testWidgets('Verify Header Defaults', (final WidgetTester tester) async {
+    bool headerTapped = false;
+    bool leftPressed = false;
+    bool rightPressed = false;
 
-    await tester.pumpWidget(wrapped(CalendarHeader(
-      headerTitle: title,
-      headerMargin: margin,
-      showHeader: true,
-      showHeaderButtons: true,
-      headerIconColor: iconColor,
-      onHeaderTitlePressed: () => headerTapped = true,
-      onRightButtonPressed: () => rightPressed = true,
-      onLeftButtonPressed: () => leftPressed = true,
-    )));
+    await tester.pumpWidget(
+      wrapped(
+        CalendarHeader(
+          headerTitle: title,
+          headerMargin: margin,
+          showHeader: true,
+          showHeaderButtons: true,
+          headerIconColor: iconColor,
+          onHeaderTitlePressed: () => headerTapped = true,
+          onRightButtonPressed: () => rightPressed = true,
+          onLeftButtonPressed: () => leftPressed = true,
+        ),
+      ),
+    );
 
     expect(find.text(title), findsOneWidget);
 
@@ -44,8 +48,8 @@ void main() {
     expect(leftPressed, equals(true));
   });
 
-  testWidgets('Verify No header Renders', (WidgetTester tester) async {
-    final noHeaderEmpty = CalendarHeader(
+  testWidgets('Verify No header Renders', (final WidgetTester tester) async {
+    final CalendarHeader noHeaderEmpty = CalendarHeader(
       showHeader: false,
       headerTitle: '',
       onLeftButtonPressed: () {},
@@ -58,44 +62,53 @@ void main() {
     expect(find.byWidget(noHeaderEmpty), findsOneWidget);
   });
 
-  testWidgets('Verify Header Is Not Touchable', (WidgetTester tester) async {
-    await tester.pumpWidget(wrapped(CalendarHeader(
-      headerTitle: title,
-      headerMargin: margin,
-      showHeader: true,
-      showHeaderButtons: true,
-      headerIconColor: iconColor,
-      onHeaderTitlePressed: null,
-      onRightButtonPressed: () {},
-      onLeftButtonPressed: () {},
-    )));
+  testWidgets('Verify Header Is Not Touchable', (
+    final WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      wrapped(
+        CalendarHeader(
+          headerTitle: title,
+          headerMargin: margin,
+          showHeader: true,
+          showHeaderButtons: true,
+          headerIconColor: iconColor,
+          onHeaderTitlePressed: null,
+          onRightButtonPressed: () {},
+          onLeftButtonPressed: () {},
+        ),
+      ),
+    );
 
     // the header TextButton Should not render
-    final touchableHeader = find.byType(TextButton);
+    final Finder touchableHeader = find.byType(TextButton);
 
     expect(touchableHeader, findsNothing);
   });
 
-  testWidgets('Verify No Header Buttons', (WidgetTester tester) async {
-    await tester.pumpWidget(wrapped(CalendarHeader(
-      headerTitle: title,
-      headerMargin: margin,
-      showHeader: true,
-      showHeaderButtons: false,
-      headerIconColor: iconColor,
-      onHeaderTitlePressed: () {},
-      onRightButtonPressed: () {},
-      onLeftButtonPressed: () {},
-    )));
+  testWidgets('Verify No Header Buttons', (final WidgetTester tester) async {
+    await tester.pumpWidget(
+      wrapped(
+        CalendarHeader(
+          headerTitle: title,
+          headerMargin: margin,
+          showHeader: true,
+          showHeaderButtons: false,
+          headerIconColor: iconColor,
+          onHeaderTitlePressed: () {},
+          onRightButtonPressed: () {},
+          onLeftButtonPressed: () {},
+        ),
+      ),
+    );
 
     // the header IconButtons Should not render
-    final headerButton = find.byType(IconButton);
+    final Finder headerButton = find.byType(IconButton);
 
     expect(headerButton, findsNothing);
   });
 }
 
 // header uses Row which requires MaterialApp as an ancestor
-Widget wrapped(Widget widget) => MaterialApp(
-      home: Material(child: widget),
-    );
+Widget wrapped(final Widget widget) =>
+    MaterialApp(home: Material(child: widget));

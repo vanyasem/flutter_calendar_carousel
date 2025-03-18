@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 
+@immutable
 class MarkedDate implements MarkedDateInterface {
-  final Color color;
-  final int? id;
-  final TextStyle? textStyle;
-  final DateTime date;
-
-  MarkedDate({
+  const MarkedDate({
     required this.color,
     this.id,
     this.textStyle,
     required this.date,
   });
 
+  final Color color;
+  final int? id;
+  final TextStyle? textStyle;
+  final DateTime date;
+
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
+  bool operator ==(final Object other) {
+    if (identical(other, this)) {
+      return true;
+    }
     return other is MarkedDate &&
         date == other.date &&
         color == other.color &&

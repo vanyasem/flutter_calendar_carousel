@@ -11,53 +11,47 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   DateTime? pressedDay;
-  testWidgets('Default test for Calendar Carousel',
-      (WidgetTester tester) async {
+  testWidgets('Default test for Calendar Carousel', (
+    final WidgetTester tester,
+  ) async {
     //  Build our app and trigger a frame.
-    final carousel = CalendarCarousel(
+    final CalendarCarousel<Event> carousel = CalendarCarousel<Event>(
       daysHaveCircularBorder: null,
-      weekendTextStyle: TextStyle(
-        color: Colors.red,
-      ),
+      weekendTextStyle: const TextStyle(color: Colors.red),
       thisMonthDayBorderColor: Colors.grey,
       headerText: 'Custom Header',
       weekFormat: true,
       height: 200,
       showIconBehindDayText: true,
-      customGridViewPhysics: NeverScrollableScrollPhysics(),
+      customGridViewPhysics: const NeverScrollableScrollPhysics(),
       markedDateShowIcon: true,
       markedDateIconMaxShown: 2,
-      selectedDayTextStyle: TextStyle(
-        color: Colors.yellow,
-      ),
-      todayTextStyle: TextStyle(
-        color: Colors.blue,
-      ),
-      markedDateIconBuilder: (Event event) {
-        return event.icon ?? Icon(Icons.help_outline);
+      selectedDayTextStyle: const TextStyle(color: Colors.yellow),
+      todayTextStyle: const TextStyle(color: Colors.blue),
+      markedDateIconBuilder: (final Event event) {
+        return event.icon ?? const Icon(Icons.help_outline);
       },
       todayButtonColor: Colors.transparent,
       todayBorderColor: Colors.green,
       markedDateMoreShowTotal: true,
       // null for not showing hidden events indicator
-      onDayPressed: (date, event) {
+      onDayPressed: (final DateTime date, final List<Event> event) {
         pressedDay = date;
       },
     );
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        body: Container(
-          child: carousel,
-        ),
-      ),
-    ));
+    await tester.pumpWidget(
+      MaterialApp(home: Scaffold(body: Container(child: carousel))),
+    );
 
     expect(find.byWidget(carousel), findsOneWidget);
 
     expect(pressedDay, isNull);
 
     await tester.tap(
-        find.text(DateTime.now().subtract(Duration(days: 1)).day.toString()));
+      find.text(
+        DateTime.now().subtract(const Duration(days: 1)).day.toString(),
+      ),
+    );
 
     await tester.pump();
 

@@ -12,132 +12,113 @@ import 'package:flutter_test/flutter_test.dart';
 Type typeOf<T>() => T;
 
 void main() {
-  testWidgets('Default test for Calendar Carousel',
-      (WidgetTester tester) async {
+  testWidgets('Default test for Calendar Carousel', (
+    final WidgetTester tester,
+  ) async {
     DateTime? pressedDay;
     //  Build our app and trigger a frame.
-    final carousel = CalendarCarousel(
+    final CalendarCarousel<Event> carousel = CalendarCarousel<Event>(
       daysHaveCircularBorder: null,
-      weekendTextStyle: TextStyle(
-        color: Colors.red,
-      ),
+      weekendTextStyle: const TextStyle(color: Colors.red),
       thisMonthDayBorderColor: Colors.grey,
       headerText: 'Custom Header',
       weekFormat: true,
       height: 200,
       showIconBehindDayText: true,
-      customGridViewPhysics: NeverScrollableScrollPhysics(),
+      customGridViewPhysics: const NeverScrollableScrollPhysics(),
       markedDateShowIcon: true,
       markedDateIconMaxShown: 2,
-      selectedDayTextStyle: TextStyle(
-        color: Colors.yellow,
-      ),
-      todayTextStyle: TextStyle(
-        color: Colors.blue,
-      ),
-      markedDateIconBuilder: (Event event) {
-        return event.icon ?? Icon(Icons.help_outline);
+      selectedDayTextStyle: const TextStyle(color: Colors.yellow),
+      todayTextStyle: const TextStyle(color: Colors.blue),
+      markedDateIconBuilder: (final Event event) {
+        return event.icon ?? const Icon(Icons.help_outline);
       },
       todayButtonColor: Colors.transparent,
       todayBorderColor: Colors.green,
       markedDateMoreShowTotal: true,
       // null for not showing hidden events indicator
-      onDayPressed: (date, event) {
+      onDayPressed: (final DateTime date, final List<Event> event) {
         pressedDay = date;
       },
     );
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        body: Container(
-          child: carousel,
-        ),
-      ),
-    ));
+    await tester.pumpWidget(
+      MaterialApp(home: Scaffold(body: Container(child: carousel))),
+    );
 
     expect(find.byWidget(carousel), findsOneWidget);
     expect(pressedDay, isNull);
   });
 
-  testWidgets(
-    'make sure onDayPressed is called when the user tap',
-    (WidgetTester tester) async {
-      DateTime? pressedDay;
+  testWidgets('make sure onDayPressed is called when the user tap', (
+    final WidgetTester tester,
+  ) async {
+    DateTime? pressedDay;
 
-      final carousel = CalendarCarousel(
-        weekFormat: true,
-        height: 200,
-        onDayPressed: (date, event) {
-          pressedDay = date;
-        },
-      );
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: Container(
-              child: carousel,
-            ),
-          ),
-        ),
-      );
+    final CalendarCarousel<EventInterface> carousel =
+        CalendarCarousel<EventInterface>(
+          weekFormat: true,
+          height: 200,
+          onDayPressed: (
+            final DateTime date,
+            final List<EventInterface> event,
+          ) {
+            pressedDay = date;
+          },
+        );
+    await tester.pumpWidget(
+      MaterialApp(home: Scaffold(body: Container(child: carousel))),
+    );
 
-      expect(find.byWidget(carousel), findsOneWidget);
+    expect(find.byWidget(carousel), findsOneWidget);
 
-      expect(pressedDay, isNull);
+    expect(pressedDay, isNull);
 
-      await tester.tap(
-          find.text(DateTime.now().subtract(Duration(days: 1)).day.toString()));
+    await tester.tap(
+      find.text(
+        DateTime.now().subtract(const Duration(days: 1)).day.toString(),
+      ),
+    );
 
-      await tester.pump();
+    await tester.pump();
 
-      expect(pressedDay, isNotNull);
-    },
-  );
+    expect(pressedDay, isNotNull);
+  });
 
   testWidgets(
     'should do nothing when the user tap and onDayPressed is not provided',
-    (WidgetTester tester) async {
-      final carousel = CalendarCarousel(
-        weekFormat: true,
-        height: 200,
-      );
+    (final WidgetTester tester) async {
+      const CalendarCarousel<EventInterface> carousel =
+          CalendarCarousel<EventInterface>(weekFormat: true, height: 200);
       await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: Container(
-              child: carousel,
-            ),
-          ),
-        ),
+        MaterialApp(home: Scaffold(body: Container(child: carousel))),
       );
 
       expect(find.byWidget(carousel), findsOneWidget);
 
       await tester.tap(
-          find.text(DateTime.now().subtract(Duration(days: 1)).day.toString()));
+        find.text(
+          DateTime.now().subtract(const Duration(days: 1)).day.toString(),
+        ),
+      );
       await tester.pump();
     },
   );
 
   testWidgets(
     'make sure onDayLongPressed is called when the user press and hold',
-    (WidgetTester tester) async {
+    (final WidgetTester tester) async {
       DateTime? longPressedDay;
 
-      final carousel = CalendarCarousel(
-        weekFormat: true,
-        height: 200,
-        onDayLongPressed: (date) {
-          longPressedDay = date;
-        },
-      );
+      final CalendarCarousel<EventInterface> carousel =
+          CalendarCarousel<EventInterface>(
+            weekFormat: true,
+            height: 200,
+            onDayLongPressed: (final DateTime date) {
+              longPressedDay = date;
+            },
+          );
       await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: Container(
-              child: carousel,
-            ),
-          ),
-        ),
+        MaterialApp(home: Scaffold(body: Container(child: carousel))),
       );
 
       expect(find.byWidget(carousel), findsOneWidget);
@@ -145,7 +126,10 @@ void main() {
       expect(longPressedDay, isNull);
 
       await tester.longPress(
-          find.text(DateTime.now().subtract(Duration(days: 1)).day.toString()));
+        find.text(
+          DateTime.now().subtract(const Duration(days: 1)).day.toString(),
+        ),
+      );
       await tester.pump();
 
       expect(longPressedDay, isNotNull);
@@ -154,25 +138,20 @@ void main() {
 
   testWidgets(
     'should do nothing when the user press and hold and onDayLongPressed is not provided',
-    (WidgetTester tester) async {
-      final carousel = CalendarCarousel(
-        weekFormat: true,
-        height: 200,
-      );
+    (final WidgetTester tester) async {
+      const CalendarCarousel<EventInterface> carousel =
+          CalendarCarousel<EventInterface>(weekFormat: true, height: 200);
       await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: Container(
-              child: carousel,
-            ),
-          ),
-        ),
+        MaterialApp(home: Scaffold(body: Container(child: carousel))),
       );
 
       expect(find.byWidget(carousel), findsOneWidget);
 
       await tester.longPress(
-          find.text(DateTime.now().subtract(Duration(days: 1)).day.toString()));
+        find.text(
+          DateTime.now().subtract(const Duration(days: 1)).day.toString(),
+        ),
+      );
       await tester.pump();
     },
   );
