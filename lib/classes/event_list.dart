@@ -1,7 +1,5 @@
 class EventList<T> {
-  EventList({
-    required this.events,
-  });
+  EventList({required this.events});
 
   Map<DateTime, List<T>> events;
 

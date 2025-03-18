@@ -12,16 +12,20 @@ void main() {
     bool leftPressed = false;
     bool rightPressed = false;
 
-    await tester.pumpWidget(wrapped(CalendarHeader(
-      headerTitle: title,
-      headerMargin: margin,
-      showHeader: true,
-      showHeaderButtons: true,
-      headerIconColor: iconColor,
-      onHeaderTitlePressed: () => headerTapped = true,
-      onRightButtonPressed: () => rightPressed = true,
-      onLeftButtonPressed: () => leftPressed = true,
-    )));
+    await tester.pumpWidget(
+      wrapped(
+        CalendarHeader(
+          headerTitle: title,
+          headerMargin: margin,
+          showHeader: true,
+          showHeaderButtons: true,
+          headerIconColor: iconColor,
+          onHeaderTitlePressed: () => headerTapped = true,
+          onRightButtonPressed: () => rightPressed = true,
+          onLeftButtonPressed: () => leftPressed = true,
+        ),
+      ),
+    );
 
     expect(find.text(title), findsOneWidget);
 
@@ -58,17 +62,23 @@ void main() {
     expect(find.byWidget(noHeaderEmpty), findsOneWidget);
   });
 
-  testWidgets('Verify Header Is Not Touchable', (final WidgetTester tester) async {
-    await tester.pumpWidget(wrapped(CalendarHeader(
-      headerTitle: title,
-      headerMargin: margin,
-      showHeader: true,
-      showHeaderButtons: true,
-      headerIconColor: iconColor,
-      onHeaderTitlePressed: null,
-      onRightButtonPressed: () {},
-      onLeftButtonPressed: () {},
-    )));
+  testWidgets('Verify Header Is Not Touchable', (
+    final WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(
+      wrapped(
+        CalendarHeader(
+          headerTitle: title,
+          headerMargin: margin,
+          showHeader: true,
+          showHeaderButtons: true,
+          headerIconColor: iconColor,
+          onHeaderTitlePressed: null,
+          onRightButtonPressed: () {},
+          onLeftButtonPressed: () {},
+        ),
+      ),
+    );
 
     // the header TextButton Should not render
     final Finder touchableHeader = find.byType(TextButton);
@@ -77,16 +87,20 @@ void main() {
   });
 
   testWidgets('Verify No Header Buttons', (final WidgetTester tester) async {
-    await tester.pumpWidget(wrapped(CalendarHeader(
-      headerTitle: title,
-      headerMargin: margin,
-      showHeader: true,
-      showHeaderButtons: false,
-      headerIconColor: iconColor,
-      onHeaderTitlePressed: () {},
-      onRightButtonPressed: () {},
-      onLeftButtonPressed: () {},
-    )));
+    await tester.pumpWidget(
+      wrapped(
+        CalendarHeader(
+          headerTitle: title,
+          headerMargin: margin,
+          showHeader: true,
+          showHeaderButtons: false,
+          headerIconColor: iconColor,
+          onHeaderTitlePressed: () {},
+          onRightButtonPressed: () {},
+          onLeftButtonPressed: () {},
+        ),
+      ),
+    );
 
     // the header IconButtons Should not render
     final Finder headerButton = find.byType(IconButton);
@@ -96,6 +110,5 @@ void main() {
 }
 
 // header uses Row which requires MaterialApp as an ancestor
-Widget wrapped(final Widget widget) => MaterialApp(
-      home: Material(child: widget),
-    );
+Widget wrapped(final Widget widget) =>
+    MaterialApp(home: Material(child: widget));
