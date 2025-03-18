@@ -66,6 +66,7 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
     this.height = double.infinity,
     this.width = double.infinity,
     this.todayTextStyle,
+    this.inactiveTodayTextStyle,
     this.dayButtonColor = Colors.transparent,
     this.todayBorderColor = Colors.red,
     this.todayButtonColor = Colors.red,
@@ -83,6 +84,8 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
     this.headerTextStyle,
     this.headerText,
     this.weekendTextStyle,
+    this.prevWeekendTextStyle,
+    this.nextWeekendTextStyle,
     this.markedDatesMap,
     this.markedDateShowIcon = false,
     this.markedDateIconBorderColor,
@@ -118,7 +121,11 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
     this.minSelectedDate,
     this.maxSelectedDate,
     this.inactiveDaysTextStyle,
+    this.inactivePrevDaysTextStyle,
+    this.inactiveNextDaysTextStyle,
     this.inactiveWeekendTextStyle,
+    this.inactivePrevWeekendTextStyle,
+    this.inactiveNextWeekendTextStyle,
     this.headerTitleTouchable = false,
     this.onHeaderTitlePressed,
     this.onLeftArrowPressed,
@@ -149,6 +156,7 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final double height;
   final double width;
   final TextStyle? todayTextStyle;
+  final TextStyle? inactiveTodayTextStyle;
   final Color dayButtonColor;
   final Color todayBorderColor;
   final Color todayButtonColor;
@@ -166,6 +174,9 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final TextStyle? headerTextStyle;
   final String? headerText;
   final TextStyle? weekendTextStyle;
+  final TextStyle? prevWeekendTextStyle;
+  final TextStyle? nextWeekendTextStyle;
+
   final EventList<T>? markedDatesMap;
 
   /// Change `makredDateWidget` when `markedDateShowIcon` is set to false.
@@ -212,7 +223,11 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final DateTime? minSelectedDate;
   final DateTime? maxSelectedDate;
   final TextStyle? inactiveDaysTextStyle;
+  final TextStyle? inactivePrevDaysTextStyle;
+  final TextStyle? inactiveNextDaysTextStyle;
   final TextStyle? inactiveWeekendTextStyle;
+  final TextStyle? inactivePrevWeekendTextStyle;
+  final TextStyle? inactiveNextWeekendTextStyle;
   final bool headerTitleTouchable;
   final VoidCallback? onHeaderTitlePressed;
   final VoidCallback? onLeftArrowPressed;
@@ -1233,17 +1248,31 @@ class _CalendarState<T extends EventInterface>
             isThisMonthDay &&
             !isToday
         ? (isSelectable
-            ? widget.weekendTextStyle
+            ? isPrevMonthDay
+                ? widget.prevWeekendTextStyle
+                : isNextMonthDay
+                ? widget.nextWeekendTextStyle
+                : widget.weekendTextStyle
+            : isPrevMonthDay
+            ? widget.inactivePrevWeekendTextStyle
+            : isNextMonthDay
+            ? widget.inactiveNextWeekendTextStyle
             : widget.inactiveWeekendTextStyle)
-        : !isSelectable
-        ? widget.inactiveDaysTextStyle
-        : isPrevMonthDay
-        ? widget.prevDaysTextStyle
-        : isNextMonthDay
-        ? widget.nextDaysTextStyle
-        : isToday
-        ? widget.todayTextStyle
-        : widget.daysTextStyle;
+        : (isSelectable
+            ? isPrevMonthDay
+                ? widget.prevDaysTextStyle
+                : isNextMonthDay
+                ? widget.nextDaysTextStyle
+                : isToday
+                ? widget.todayTextStyle
+                : widget.daysTextStyle
+            : isPrevMonthDay
+            ? widget.inactivePrevDaysTextStyle
+            : isNextMonthDay
+            ? widget.inactiveNextDaysTextStyle
+            : isToday
+            ? widget.inactiveTodayTextStyle
+            : widget.inactiveDaysTextStyle);
   }
 
   Widget getDayContainer(
