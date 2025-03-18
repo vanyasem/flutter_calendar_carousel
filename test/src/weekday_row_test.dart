@@ -131,7 +131,7 @@ void main() {
 
     await tester.pumpWidget(emptyContainer);
 
-    expect(find.byType(Container), findsOneWidget);
+    expect(find.byType(SizedBox), findsOneWidget);
 
     expect(find.byType(Row), findsNothing);
   });
