@@ -171,6 +171,10 @@ class _MyHomePageState extends State<MyHomePage> {
             fontSize: 18,
             color: Colors.blue,
           ),
+          inactiveDates: <DateTime>[
+            DateTime(2019, 2, 5),
+            DateTime(2019, 2, 15),
+          ],
           showHeader: false,
           todayTextStyle: const TextStyle(color: Colors.blue),
           // markedDateShowIcon: true,

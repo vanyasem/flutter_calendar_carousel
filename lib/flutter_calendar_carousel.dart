@@ -120,6 +120,7 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
     this.firstDayOfWeek,
     this.minSelectedDate,
     this.maxSelectedDate,
+    this.inactiveDates = const <DateTime>[],
     this.inactiveDaysTextStyle,
     this.inactivePrevDaysTextStyle,
     this.inactiveNextDaysTextStyle,
@@ -222,6 +223,7 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final int? firstDayOfWeek;
   final DateTime? minSelectedDate;
   final DateTime? maxSelectedDate;
+  final List<DateTime> inactiveDates;
   final TextStyle? inactiveDaysTextStyle;
   final TextStyle? inactivePrevDaysTextStyle;
   final TextStyle? inactiveNextDaysTextStyle;
@@ -733,6 +735,10 @@ class _CalendarState<T extends EventInterface>
             } else if (now.millisecondsSinceEpoch >
                 maxDate.millisecondsSinceEpoch) {
               isSelectable = false;
+            } else if (widget.inactiveDates.any(
+              (final DateTime inactiveDate) => inactiveDate.isSameDay(now),
+            )) {
+              isSelectable = false;
             }
 
             return renderDay(
@@ -846,6 +852,11 @@ class _CalendarState<T extends EventInterface>
                   } else if (now.millisecondsSinceEpoch >
                       maxDate.millisecondsSinceEpoch) {
                     isSelectable = false;
+                  } else if (widget.inactiveDates.any(
+                    (final DateTime inactiveDate) =>
+                        inactiveDate.isSameDay(now),
+                  )) {
+                    isSelectable = false;
                   }
                   return renderDay(
                     isSelectable,
@@ -919,6 +930,11 @@ class _CalendarState<T extends EventInterface>
       return;
     }
     if (picked.millisecondsSinceEpoch > maxDate.millisecondsSinceEpoch) {
+      return;
+    }
+    if (widget.inactiveDates.any(
+      (final DateTime inactiveDate) => inactiveDate.isSameDay(picked),
+    )) {
       return;
     }
 
@@ -1334,5 +1350,13 @@ class _CalendarState<T extends EventInterface>
           isThisMonthDay,
           now,
         );
+  }
+}
+
+extension on DateTime {
+  bool isSameDay(final DateTime otherDate) {
+    return otherDate.year == year &&
+        otherDate.month == month &&
+        otherDate.day == day;
   }
 }

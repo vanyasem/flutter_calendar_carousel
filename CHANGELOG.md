@@ -1,3 +1,7 @@
+## [2.4.8]
+
+- Add ability to specify inactive (disabled) days by setting `inactiveDates`
+
 ## [2.4.7]
 
 - FIX: Inactive (disabled) days were still clickable (and had an InkWell animation)
