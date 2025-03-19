@@ -5,10 +5,9 @@
 // are correct.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
-
-import '../../lib/classes/event.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   DateTime? pressedDay;
@@ -23,7 +22,7 @@ void main() {
       thisMonthDayBorderColor: Colors.grey,
       headerText: 'Custom Header',
       weekFormat: true,
-      height: 200.0,
+      height: 200,
       showIconBehindDayText: true,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
       markedDateShowIcon: true,
