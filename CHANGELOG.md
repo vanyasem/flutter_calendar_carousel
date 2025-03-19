@@ -1,3 +1,7 @@
+## [2.5.2]
+
+- Add ability to configure day border radius by setting `daysBorderRadius` ([#391](https://github.com/hyochan/flutter_calendar_carousel/pull/391))
+
 ## [2.5.1]
 
 - Replace bare `Function` types with typedefs ([#393](https://github.com/hyochan/flutter_calendar_carousel/pull/393))
