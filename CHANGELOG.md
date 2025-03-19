@@ -1,10 +1,3 @@
-## [2.5.0]
-
-- Add linter and code formatting (#386)
-- Upgrade dependencies and integrate linter (#384)
-- Support Xcode 16 for iOS (#385)
-- Migrate Gradle to use declarative plugins block in Android example (#383)
-
 ## [2.4.7]
 
 - FIX: Inactive (disabled) days were still clickable (and had an InkWell animation)
