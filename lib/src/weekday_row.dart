@@ -5,14 +5,16 @@ import 'package:flutter_calendar_carousel/src/default_styles.dart'
 import 'package:intl/intl.dart';
 
 class WeekdayRow extends StatelessWidget {
-  WeekdayRow(this.firstDayOfWeek, this.customWeekdayBuilder,
-      {required this.showWeekdays,
+  const WeekdayRow(this.firstDayOfWeek, this.customWeekdayBuilder,
+      {Key? key,
+      required this.showWeekdays,
       required this.weekdayFormat,
       required this.weekdayMargin,
       required this.weekdayPadding,
       required this.weekdayBackgroundColor,
       required this.weekdayTextStyle,
-      required this.localeDate});
+      required this.localeDate})
+      : super(key: key);
 
   final WeekdayBuilder? customWeekdayBuilder;
   final bool showWeekdays;

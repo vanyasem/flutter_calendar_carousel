@@ -1,5 +1,5 @@
-import 'marked_date.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_calendar_carousel/classes/marked_date.dart';
 
 class MultipleMarkedDates {
   List<MarkedDate> markedDates;
@@ -11,20 +11,20 @@ class MultipleMarkedDates {
   }
 
   void addRange(MarkedDate markedDate, {int plus = 0, int minus = 0}) {
-    this.add(markedDate);
+    add(markedDate);
 
     if (plus > 0) {
       int start = 1;
       MarkedDate newAddMarkedDate;
 
       while (start <= plus) {
-        newAddMarkedDate = new MarkedDate(
+        newAddMarkedDate = MarkedDate(
           color: markedDate.color,
           date: markedDate.date.add(Duration(days: start)),
           textStyle: markedDate.textStyle,
         );
 
-        this.add(newAddMarkedDate);
+        add(newAddMarkedDate);
 
         start += 1;
       }
@@ -35,13 +35,13 @@ class MultipleMarkedDates {
       MarkedDate newSubMarkedDate;
 
       while (start <= minus) {
-        newSubMarkedDate = new MarkedDate(
+        newSubMarkedDate = MarkedDate(
           color: markedDate.color,
           date: markedDate.date.subtract(Duration(days: start)),
           textStyle: markedDate.textStyle,
         );
 
-        this.add(newSubMarkedDate);
+        add(newSubMarkedDate);
 
         start += 1;
       }

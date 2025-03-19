@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'default_styles.dart' show defaultHeaderTextStyle;
+import 'package:flutter_calendar_carousel/src/default_styles.dart'
+    show defaultHeaderTextStyle;
 
 class CalendarHeader extends StatelessWidget {
   /// Passing in values for [leftButtonIcon] or [rightButtonIcon] will override [headerIconColor]
-  CalendarHeader(
-      {required this.headerTitle,
+  const CalendarHeader(
+      {Key? key,
+      required this.headerTitle,
       this.headerMargin,
       required this.showHeader,
       this.headerTextStyle,
@@ -15,7 +17,8 @@ class CalendarHeader extends StatelessWidget {
       required this.onLeftButtonPressed,
       required this.onRightButtonPressed,
       this.onHeaderTitlePressed})
-      : isTitleTouchable = onHeaderTitlePressed != null;
+      : isTitleTouchable = onHeaderTitlePressed != null,
+        super(key: key);
 
   final String headerTitle;
   final EdgeInsetsGeometry? headerMargin;
@@ -62,11 +65,12 @@ class CalendarHeader extends StatelessWidget {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    showHeaderButtons ? _leftButton() : Container(),
-                    isTitleTouchable
-                        ? _headerTouchable()
-                        : Text(headerTitle, style: getTextStyle),
-                    showHeaderButtons ? _rightButton() : Container(),
+                    if (showHeaderButtons) _leftButton() else Container(),
+                    if (isTitleTouchable)
+                      _headerTouchable()
+                    else
+                      Text(headerTitle, style: getTextStyle),
+                    if (showHeaderButtons) _rightButton() else Container(),
                   ])),
         )
       : Container();

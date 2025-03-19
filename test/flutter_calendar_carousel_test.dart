@@ -5,10 +5,9 @@
 // are correct.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
-
-import '../lib/classes/event.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 Type typeOf<T>() => T;
 
@@ -25,7 +24,7 @@ void main() {
       thisMonthDayBorderColor: Colors.grey,
       headerText: 'Custom Header',
       weekFormat: true,
-      height: 200.0,
+      height: 200,
       showIconBehindDayText: true,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
       markedDateShowIcon: true,
@@ -66,7 +65,7 @@ void main() {
 
       final carousel = CalendarCarousel(
         weekFormat: true,
-        height: 200.0,
+        height: 200,
         onDayPressed: (date, event) {
           pressedDay = date;
         },
@@ -99,7 +98,7 @@ void main() {
     (WidgetTester tester) async {
       final carousel = CalendarCarousel(
         weekFormat: true,
-        height: 200.0,
+        height: 200,
       );
       await tester.pumpWidget(
         MaterialApp(
@@ -126,7 +125,7 @@ void main() {
 
       final carousel = CalendarCarousel(
         weekFormat: true,
-        height: 200.0,
+        height: 200,
         onDayLongPressed: (date) {
           longPressedDay = date;
         },
@@ -158,7 +157,7 @@ void main() {
     (WidgetTester tester) async {
       final carousel = CalendarCarousel(
         weekFormat: true,
-        height: 200.0,
+        height: 200,
       );
       await tester.pumpWidget(
         MaterialApp(
