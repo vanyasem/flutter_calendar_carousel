@@ -1,3 +1,18 @@
+## [2.5.1]
+
+- Replace bare `Function` types with typedefs ([#393](https://github.com/hyochan/flutter_calendar_carousel/pull/393))
+- Add ability to configure day border radius by setting `daysBorderRadius` ([#391](https://github.com/hyochan/flutter_calendar_carousel/pull/391))
+- Fix PR links in 2.5.0's changelog not being clickable ([#390](https://github.com/hyochan/flutter_calendar_carousel/pull/390))
+- Fix inactive (disabled) days being clickable ([#389](https://github.com/hyochan/flutter_calendar_carousel/pull/389))
+- Don't invoke `animateToPage` when page was scrolled manually ([#388](https://github.com/hyochan/flutter_calendar_carousel/pull/388))
+
+## [2.5.0]
+
+- Add linter and code formatting ([#386](https://github.com/hyochan/flutter_calendar_carousel/pull/386))
+- Upgrade dependencies and integrate linter ([#384](https://github.com/hyochan/flutter_calendar_carousel/pull/384))
+- Support Xcode 16 for iOS ([#385](https://github.com/hyochan/flutter_calendar_carousel/pull/385))
+- Migrate Gradle to use declarative plugins block in Android example ([#383](https://github.com/hyochan/flutter_calendar_carousel/pull/383))
+
 ## [2.5.0]
 
 - Add linter and code formatting ([#386](https://github.com/hyochan/flutter_calendar_carousel/pull/386))
