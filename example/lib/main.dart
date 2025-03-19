@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
       headerText: 'Custom Header',
       weekFormat: true,
       markedDatesMap: _markedDateMap,
-      height: 200,
+      height: 80,
       selectedDateTime: _currentDate2,
       showIconBehindDayText: true,
       //          daysHaveCircularBorder: false, /// null for not rendering any border, true for circular border, false for rectangular border
@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
           weekFormat: false,
           //      firstDayOfWeek: 4,
           markedDatesMap: _markedDateMap,
-          height: 420,
+          height: 350,
           selectedDateTime: _currentDate2,
           targetDateTime: _targetDateTime,
           customGridViewPhysics: const NeverScrollableScrollPhysics(),

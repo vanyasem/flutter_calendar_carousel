@@ -362,90 +362,88 @@ class _CalendarState<T extends EventInterface>
   @override
   Widget build(final BuildContext context) {
     final String? headerText = widget.headerText;
-    return SizedBox(
-      width: widget.width,
-      height: widget.height,
-      child: Column(
-        children: <Widget>[
-          CalendarHeader(
-            showHeader: widget.showHeader,
-            headerMargin: widget.headerMargin,
-            headerTitle:
-                headerText ??
-                (widget.weekFormat
-                    ? _localeDate.format(this._weeks[this._pageNum].first)
-                    : _localeDate.format(this._dates[this._pageNum])),
-            headerTextStyle: widget.headerTextStyle,
-            showHeaderButtons: widget.showHeaderButton,
-            headerIconColor: widget.iconColor,
-            leftButtonIcon: widget.leftButtonIcon,
-            rightButtonIcon: widget.rightButtonIcon,
-            onLeftButtonPressed: () {
-              widget.onLeftArrowPressed?.call();
+    return Column(
+      children: <Widget>[
+        CalendarHeader(
+          showHeader: widget.showHeader,
+          headerMargin: widget.headerMargin,
+          headerTitle:
+              headerText ??
+              (widget.weekFormat
+                  ? _localeDate.format(this._weeks[this._pageNum].first)
+                  : _localeDate.format(this._dates[this._pageNum])),
+          headerTextStyle: widget.headerTextStyle,
+          showHeaderButtons: widget.showHeaderButton,
+          headerIconColor: widget.iconColor,
+          leftButtonIcon: widget.leftButtonIcon,
+          rightButtonIcon: widget.rightButtonIcon,
+          onLeftButtonPressed: () {
+            widget.onLeftArrowPressed?.call();
 
-              if (this._pageNum > 0) {
-                _setDate(page: this._pageNum - 1);
-              }
-            },
-            onRightButtonPressed: () {
-              widget.onRightArrowPressed?.call();
+            if (this._pageNum > 0) {
+              _setDate(page: this._pageNum - 1);
+            }
+          },
+          onRightButtonPressed: () {
+            widget.onRightArrowPressed?.call();
 
-              if (widget.weekFormat) {
-                if (this._weeks.length - 1 > this._pageNum) {
-                  _setDate(page: this._pageNum + 1);
-                }
-              } else {
-                if (this._dates.length - 1 > this._pageNum) {
-                  _setDate(page: this._pageNum + 1);
-                }
+            if (widget.weekFormat) {
+              if (this._weeks.length - 1 > this._pageNum) {
+                _setDate(page: this._pageNum + 1);
               }
-            },
-            onHeaderTitlePressed:
-                widget.headerTitleTouchable
-                    ? () {
-                      final VoidCallback? onHeaderTitlePressed =
-                          widget.onHeaderTitlePressed;
-                      if (onHeaderTitlePressed != null) {
-                        onHeaderTitlePressed();
-                      } else {
-                        _selectDateFromPicker();
-                      }
+            } else {
+              if (this._dates.length - 1 > this._pageNum) {
+                _setDate(page: this._pageNum + 1);
+              }
+            }
+          },
+          onHeaderTitlePressed:
+              widget.headerTitleTouchable
+                  ? () {
+                    final VoidCallback? onHeaderTitlePressed =
+                        widget.onHeaderTitlePressed;
+                    if (onHeaderTitlePressed != null) {
+                      onHeaderTitlePressed();
+                    } else {
+                      _selectDateFromPicker();
                     }
-                    : null,
+                  }
+                  : null,
+        ),
+        WeekdayRow(
+          firstDayOfWeek,
+          widget.customWeekDayBuilder,
+          showWeekdays: widget.showWeekDays,
+          capitalizeWeekDays: widget.capitalizeWeekDays,
+          weekdayFormat: widget.weekDayFormat,
+          weekdayMargin: widget.weekDayMargin,
+          weekdayPadding: widget.weekDayPadding,
+          weekdayBackgroundColor: widget.weekDayBackgroundColor,
+          weekdayTextStyle: widget.weekdayTextStyle,
+          localeDate: _localeDate,
+        ),
+        SizedBox(
+          width: widget.width,
+          height: widget.height,
+          child: PageView.builder(
+            itemCount:
+                widget.weekFormat ? this._weeks.length : this._dates.length,
+            physics:
+                widget.isScrollable
+                    ? widget.pageScrollPhysics
+                    : const NeverScrollableScrollPhysics(),
+            scrollDirection: widget.scrollDirection,
+            onPageChanged: (final int index) {
+              this._setDate(page: index, shouldJump: false);
+            },
+            controller: _controller,
+            itemBuilder: (final BuildContext context, final int index) {
+              return widget.weekFormat ? weekBuilder(index) : builder(index);
+            },
+            pageSnapping: widget.pageSnapping,
           ),
-          WeekdayRow(
-            firstDayOfWeek,
-            widget.customWeekDayBuilder,
-            showWeekdays: widget.showWeekDays,
-            capitalizeWeekDays: widget.capitalizeWeekDays,
-            weekdayFormat: widget.weekDayFormat,
-            weekdayMargin: widget.weekDayMargin,
-            weekdayPadding: widget.weekDayPadding,
-            weekdayBackgroundColor: widget.weekDayBackgroundColor,
-            weekdayTextStyle: widget.weekdayTextStyle,
-            localeDate: _localeDate,
-          ),
-          Expanded(
-            child: PageView.builder(
-              itemCount:
-                  widget.weekFormat ? this._weeks.length : this._dates.length,
-              physics:
-                  widget.isScrollable
-                      ? widget.pageScrollPhysics
-                      : const NeverScrollableScrollPhysics(),
-              scrollDirection: widget.scrollDirection,
-              onPageChanged: (final int index) {
-                this._setDate(page: index, shouldJump: false);
-              },
-              controller: _controller,
-              itemBuilder: (final BuildContext context, final int index) {
-                return widget.weekFormat ? weekBuilder(index) : builder(index);
-              },
-              pageSnapping: widget.pageSnapping,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

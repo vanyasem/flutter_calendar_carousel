@@ -1,3 +1,7 @@
+## [2.4.9]
+
+- **BREAKING:** Apply `height` and `width` to calendar widget only (and not to header/weekday row)
+
 ## [2.4.8]
 
 - Add ability to specify inactive (disabled) days by setting `inactiveDates`
