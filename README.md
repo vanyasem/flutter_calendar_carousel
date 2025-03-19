@@ -1,8 +1,8 @@
 # flutter_calendar_carousel
 
 [![Pub Version](https://img.shields.io/pub/v/flutter_calendar_carousel.svg?style=flat-square)](https://pub.dartlang.org/packages/flutter_calendar_carousel)
-[![Flutter CI](https://github.com/dooboolab/flutter_calendar_carousel/actions/workflows/ci.yml/badge.svg)](https://github.com/dooboolab/flutter_calendar_carousel/actions/workflows/ci.yml)
-[![Coverage Status](https://codecov.io/gh/dooboolab/flutter_calendar_carousel/branch/master/graph/badge.svg?token=KTrSs3fGsS)](https://codecov.io/gh/dooboolab/flutter_calendar_carousel)
+[![Flutter CI](https://github.com/hyochan/flutter_calendar_carousel/actions/workflows/ci.yml/badge.svg)](https://github.com/hyochan/flutter_calendar_carousel/actions/workflows/ci.yml)
+[![Coverage Status](https://codecov.io/gh/hyochan/flutter_calendar_carousel/branch/master/graph/badge.svg?token=KTrSs3fGsS)](https://codecov.io/gh/hyochan/flutter_calendar_carousel)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Calendar widget for flutter that is swipeable horizontally. This widget can help you build your own calendar widget highly customizable. Now you can even add your icon for each event.
@@ -14,25 +14,25 @@ This widget is compatible with flutter V3 from version `2.4.+`.
 
 [2.0.3]
 
-- Multiple days selection using `addRange` method [#285](https://github.com/dooboolab/flutter_calendar_carousel/pull/285)
+- Multiple days selection using `addRange` method [#285](https://github.com/hyochan/flutter_calendar_carousel/pull/285)
 
 - Check out great feature `customDayBuilder` work done by [maxgmer](https://github.com/maxgmer) :tada:.
 
 #### Rectangular style
 
-![image](https://raw.githubusercontent.com/dooboolab/flutter_calendar_carousel/master/doc/calendar1.gif)
+![image](https://raw.githubusercontent.com/hyochan/flutter_calendar_carousel/master/doc/calendar1.gif)
 
 #### Circular style
 
-![image](https://raw.githubusercontent.com/dooboolab/flutter_calendar_carousel/master/doc/calendar2.gif)
+![image](https://raw.githubusercontent.com/hyochan/flutter_calendar_carousel/master/doc/calendar2.gif)
 
 #### No border
 
-![image](https://raw.githubusercontent.com/dooboolab/flutter_calendar_carousel/master/doc/calendar3.gif)
+![image](https://raw.githubusercontent.com/hyochan/flutter_calendar_carousel/master/doc/calendar3.gif)
 
 #### Marked Dates
 
-![image](https://raw.githubusercontent.com/dooboolab/flutter_calendar_carousel/master/doc/calendar4.gif)
+![image](https://raw.githubusercontent.com/hyochan/flutter_calendar_carousel/master/doc/calendar4.gif)
 
 #### Custom Icon Events
 
