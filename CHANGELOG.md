@@ -1,4 +1,4 @@
-## [2.5.2]
+## [2.5.3]
 
 - Add ability to configure day border radius by setting `daysBorderRadius` ([#391](https://github.com/hyochan/flutter_calendar_carousel/pull/391))
 
